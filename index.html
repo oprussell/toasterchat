@@ -1,0 +1,4373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toasterchat — Toastercade</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NDAgNzUyIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01Ni44NiAyNzNjLjg5LTkxLjUyIDYyLjMzLTE2NS44MSAxNTEuNjYtMTg0Ljc2IDU2LjM2LTEwLjQ3IDExMy4zNCAzLjQyIDE1Ny40NCA0MC4yNHEuNjYuNDkgMS40Ny40MyA3Ljg1LTUuNjUgMTUuNjUtMTEuNDVDNDkwLjIgNDUuMjEgNjM0LjY3IDk4LjAxIDY3MC44MSAyMjEuNTRjMTkuMTQgNzEuNDQtLjYzIDEzOC42My01Mi42OSAxOTAuMDNxLS4xNyA5OS40Ny0uMyAxOTguOTNjLTMuNzMgNDMuNS0zNS44OCA3NC45My03OS4zMiA3OC4zcS0xNjkuNS4wOS0zMzkgMGMtNDcuNzUtMi42MS04MS43LTM2LjA3LTgyLjUzLTg0LjNxLjAxLTk2LS4wNS0xOTItLjE4LTEuMTQtLjk5LTEuOTdDNzguMDEgMzc0LjU4IDU2LjY2IDMyNS4yOCA1Ni44NiAyNzN6bTYzLjU2LS4wMWMxLjE4IDQyLjcxIDE3LjcxIDc0LjYgNTAuOTIgMTAxLjEzcS44MS42NyAxLjEyIDEuNjhjLjkzIDcxLjg1LS40OCAxNDQuNzIuNzUgMjE2LjQzIDMuNDMgMjMuNDEgMjIuNDggNDEuOTEgNDYuMzUgNDMuMDVxMTQ3Ljk0LjQyIDI5NS44OS0uMDFjMjQuNjEtMS4zOSA0My43OC0yMC42NCA0Ni4zNy00NC45N3EuMjktMTA3LjI4LjU2LTIxNC41NWMuMzYtMS42MiA5LjM4LTguMjIgMTAuOTQtMTAuMDkgOTcuNjgtODguMzUgNi44MS0yNTAuMDEtMTE5LjMtMjEyLjA5LTMzLjgzIDEwLjQ4LTUzLjc2IDI3LjkzLTczLjA0IDU2Ljc5LTMuNi4xNy0yNS45NSAxLjE3LTI3LjY4LS4xNy02OC43OC0xMDguMDctMjMwLjk1LTY0Ljg1LTIzMi44OCA2Mi44eiIgc3R5bGU9ImZpbGw6IzcxNGMxZTtzdHJva2U6IzcxNGMxZTtzdHJva2Utd2lkdGg6LjUiLz4KICAgIDxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyMC40MiAyNzIuOTljMS45My0xMjcuNjUgMTY0LjEtMTcwLjg3IDIzMi44OC02Mi44IDEuNzMgMS4zNCAyNC4wOC4zNCAyNy42OC4xNyAxOS4yOC0yOC44NiAzOS4yMS00Ni4zMSA3My4wNC01Ni43OUM1ODAuMTMgMTE1LjY1IDY3MSAyNzcuMzEgNTczLjMyIDM2NS42NmMtMS41NiAxLjg3LTEwLjU4IDguNDctMTAuOTQgMTAuMDlxLS4yNyAxMDcuMjctLjU2IDIxNC41NWMtMi41OSAyNC4zMy0yMS43NiA0My41OC00Ni4zNyA0NC45N3EtMTQ3Ljk1LjQzLTI5NS44OS4wMWMtMjMuODctMS4xNC00Mi45Mi0xOS42NC00Ni4zNS00My4wNS0xLjIzLTcxLjcxLjE4LTE0NC41OC0uNzUtMjE2LjQzcS0uMzEtMS4wMS0xLjEyLTEuNjhjLTMzLjIxLTI2LjUzLTQ5Ljc0LTU4LjQyLTUwLjkyLTEwMS4xM3pNNDY0IDIzMmMyLjk1IDM2LjE2IDU0Ljg0IDI4LjcxIDQ4LjYyLTUuMjgtNy4wOC0yOC40OC00Ny4wOS0yNC42OC00OC42MiA1LjI4em0tMjczLjI4IDQxYzIuODEgNzQuMDIgMTA4LjM1IDcwLjggMTA5LjE2LjQ5LS44LTcxLjUtMTA2LjctNzIuNzktMTA5LjE2LS40OXptMjMxLjExIDBjLjk0IDMxLjcgNDYuMSAzMy4zMyA0OC45NCAxLjQ0LjA1LTMyLjQtNDYuMjktMzQuODItNDguOTQtMS40NHptODYuMTYgMWMyLjU1IDM0LjA4IDUyLjQ4IDI5Ljc3IDQ4LjcxLTQuMzYtNS43NC0yOS42Ny00Ny44My0yNi41MS00OC43MSA0LjM2ek00NjQgMzE1YzMuNiAzNy4zMiA1NC45NCAyOC4zOCA0OC41NC01LjI1LTcuMDYtMjguMTEtNDYuOTctMjQuMzYtNDguNTQgNS4yNXoiIHN0eWxlPSJmaWxsOiNiMjhkNTY7c3Ryb2tlOiNiMjhkNTY7c3Ryb2tlLXdpZHRoOi41Ii8+CiAgICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01MDcuOTkgMjc0Yy44OC0zMC44NyA0Mi45Ny0zNC4wMyA0OC43MS00LjM2IDMuNzcgMzQuMTMtNDYuMTYgMzguNDQtNDguNzEgNC4zNnoiIHN0eWxlPSJmaWxsOiMzYTc1MjQ7c3Ryb2tlOiMzYTc1MjQ7c3Ryb2tlLXdpZHRoOi41Ii8+CiAgICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00MjEuODMgMjczYzIuNjUtMzMuMzggNDguOTktMzAuOTYgNDguOTQgMS40NC0yLjg0IDMxLjg5LTQ4IDMwLjI2LTQ4Ljk0LTEuNDR6IiBzdHlsZT0iZmlsbDojZmVkODZmO3N0cm9rZTojZmVkODZmO3N0cm9rZS13aWR0aDouNSIvPgogICAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMTkwLjcyIDI3M2MyLjQ2LTcyLjMgMTA4LjM2LTcxLjAxIDEwOS4xNi40OS0uODEgNzAuMzEtMTA2LjM1IDczLjUzLTEwOS4xNi0uNDl6IiBzdHlsZT0iZmlsbDojMDAwO3N0cm9rZTojMDAwO3N0cm9rZS13aWR0aDouNSIvPgogICAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNDY0IDMxNWMxLjU3LTI5LjYxIDQxLjQ4LTMzLjM2IDQ4LjU0LTUuMjUgNi40IDMzLjYzLTQ0Ljk0IDQyLjU3LTQ4LjU0IDUuMjV6IiBzdHlsZT0iZmlsbDojMmEyZDcwO3N0cm9rZTojMmEyZDcwO3N0cm9rZS13aWR0aDouNSIvPgogICAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNDY0IDIzMmMxLjUzLTI5Ljk2IDQxLjU0LTMzLjc2IDQ4LjYyLTUuMjggNi4yMiAzMy45OS00NS42NyA0MS40NC00OC42MiA1LjI4eiIgc3R5bGU9ImZpbGw6I2NhMDgxMztzdHJva2U6I2NhMDgxMztzdHJva2Utd2lkdGg6LjUiLz48L3N2Zz4=">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #262a67;
+  --navy-deep: #191c47;
+  --tan: #bb8a4c;
+  --tan-soft: #e9d9bc;
+  --brown: #6b4423;
+  --cream: #fbf6ee;
+  --white: #ffffff;
+  --surface: #ffffff;
+  --ink: #211a10;
+  --error: #ca0813;
+  --line: rgba(107,68,35,0.14);
+  --line-strong: rgba(107,68,35,0.22);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+body.in-chat { background: var(--cream); }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+:focus-visible { outline: 3px solid var(--tan); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------- name gate ---------------- */
+.gate {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  padding: 24px;
+}
+.gate-card {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  color: var(--white);
+}
+.gate-logo {
+  width: 96px;
+  margin: 0 auto 20px;
+}
+.gate-card h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.gate-sub {
+  margin: 10px 0 28px;
+  color: #d9dcf5;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+#nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#nameInput {
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  text-align: center;
+}
+#nameInput::placeholder { color: #b9bdea; }
+#nameInput:focus { border-color: var(--tan); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-primary { background: var(--tan); color: var(--navy-deep); }
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.gate-hint {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  color: #9a9fd6;
+}
+
+/* ---------------- chat app shell ---------------- */
+#chatApp {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.chat-header {
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 16px;
+  flex-shrink: 0;
+  width: 100%;
+}
+.header-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand-logo { width: 32px; height: 32px; flex-shrink: 0; }
+.brand-text { min-width: 0; }
+.brand-name { font-weight: 800; font-size: 1rem; line-height: 1.1; }
+.brand-name span { color: var(--tan); }
+.brand-tagline { font-size: 0.72rem; color: #b9bdea; height: 14px; }
+
+.header-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.presence-list { display: flex; align-items: center; }
+.presence-list .avatar { margin-left: -8px; border: 2px solid var(--navy); }
+.presence-list .avatar:first-child { margin-left: 0; }
+
+.icon-btn {
+  width: 34px; height: 34px; border-radius: 999px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: var(--white);
+  cursor: pointer; transition: background 0.15s ease;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* ---------------- messages ---------------- */
+#messages-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px 6px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  scroll-behavior: auto;
+}
+
+.scroll-bottom-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 50;
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.scroll-bottom-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.scroll-bottom-btn:hover { background: var(--navy-deep); }
+
+.divider {
+  align-self: center;
+  color: var(--brown);
+  opacity: 0.65;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 14px 0 10px;
+}
+
+.msg-row.system {
+  align-self: center;
+  color: var(--brown);
+  opacity: 0.65;
+  font-size: 0.78rem;
+  font-style: italic;
+  margin: 6px 0;
+}
+
+.msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+  max-width: 100%;
+  animation: pop-in 0.16s ease;
+}
+.msg-row.grouped { margin-top: 2px; }
+.msg-row.own { justify-content: flex-end; }
+.msg-row.other { justify-content: flex-start; }
+.msg-row.no-anim { animation: none; }
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar, .avatar-spacer {
+  width: 30px; height: 30px; flex-shrink: 0;
+}
+.avatar {
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-weight: 700; font-size: 0.78rem;
+  overflow: hidden;
+}
+.avatar-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar-lg { flex-shrink: 0; font-size: 2.75rem; line-height: 1; }
+.avatar.clickable { cursor: pointer; }
+.avatar-preview-big {
+  width: min(60vw, 320px); height: min(60vw, 320px);
+  border-radius: 999px; object-fit: cover; display: block;
+}
+.avatar-preview-big-initials {
+  width: min(60vw, 320px); height: min(60vw, 320px);
+  font-size: 6rem; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-weight: 700;
+}
+
+.bubble-col {
+  display: flex;
+  flex-direction: column;
+  max-width: 74%;
+  min-width: 0;
+}
+.msg-row.own .bubble-col { align-items: flex-end; }
+.msg-row.other .bubble-col { align-items: flex-start; }
+
+.sender-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0 4px 3px;
+}
+
+.bubble {
+  padding: 9px 14px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+.bubble.own {
+  background: var(--navy);
+  color: var(--white);
+}
+.bubble.other {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid rgba(107,68,35,0.14);
+}
+.bubble.own.tail { border-bottom-right-radius: 4px; }
+.bubble.other.tail { border-bottom-left-radius: 4px; }
+
+.bubble.big-emoji {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  line-height: 1;
+}
+.bubble.big-emoji.emoji-1 { font-size: 3.4rem; }
+.bubble.big-emoji.emoji-2 { font-size: 2.6rem; }
+.bubble.big-emoji.emoji-3 { font-size: 2rem; }
+
+/* ---------------- file bubbles ---------------- */
+.bubble.file-bubble {
+  padding: 6px;
+  overflow: hidden;
+}
+.bubble.file-bubble.own { background: var(--navy); }
+.bubble.file-bubble.other { background: var(--surface); }
+
+.bubble.has-multi {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 100%;
+}
+.msg-row.own .bubble.has-multi { align-items: flex-end; }
+.msg-row.other .bubble.has-multi { align-items: flex-start; }
+
+.bubble-segment {
+  padding: 9px 14px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.bubble.own .bubble-segment {
+  background: var(--navy);
+  color: var(--white);
+}
+.bubble.other .bubble-segment {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid rgba(107,68,35,0.14);
+}
+.bubble-segment.file-segment {
+  padding: 6px;
+}
+.bubble.own.tail .bubble-segment:last-child { border-bottom-right-radius: 4px; }
+.bubble.other.tail .bubble-segment:last-child { border-bottom-left-radius: 4px; }
+
+.bubble-segment.big-emoji {
+  background: transparent !important;
+  border: none !important;
+  padding: 6px 12px !important;
+  line-height: 1;
+  text-align: center;
+}
+.bubble-segment.big-emoji.emoji-1 { font-size: 3.4rem; }
+.bubble-segment.big-emoji.emoji-2 { font-size: 2.6rem; }
+.bubble-segment.big-emoji.emoji-3 { font-size: 2rem; }
+
+.bubble.has-image {
+  width: 280px;
+  max-width: 100%;
+}
+.bubble.has-image .bubble-segment {
+  width: 100%;
+}
+
+.file-stack {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  min-width: 200px;
+  max-width: 100%;
+}
+
+.file-image {
+  width: 100%;
+  max-height: 280px;
+  border-radius: 12px;
+  cursor: pointer;
+  object-fit: cover;
+  margin-bottom: 8px;
+  background-color: #fbf8f2;
+  background-image:
+    linear-gradient(45deg, rgba(107,68,35,0.06) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(107,68,35,0.06) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(107,68,35,0.06) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(107,68,35,0.06) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 6px;
+  min-width: 210px;
+}
+.audio-play-btn {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 999px; border: none; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tan); color: var(--navy-deep); cursor: pointer;
+}
+.bubble.own .audio-play-btn { background: rgba(255,255,255,0.25); color: var(--white); }
+.audio-track {
+  flex: 1; height: 5px; border-radius: 999px; background: rgba(107,68,35,0.18);
+  cursor: pointer; position: relative;
+}
+.bubble.own .audio-track { background: rgba(255,255,255,0.25); }
+.audio-track-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  border-radius: 999px; background: var(--brown);
+}
+.bubble.own .audio-track-fill { background: var(--white); }
+.audio-time {
+  font-size: 0.7rem; opacity: 0.75; flex-shrink: 0; min-width: 38px; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.file-generic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  min-width: 190px;
+}
+.file-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tan-soft); color: var(--brown);
+}
+.bubble.own .file-icon { background: rgba(255,255,255,0.15); color: var(--white); }
+.file-info { min-width: 0; flex: 1; }
+.file-name {
+  font-weight: 700; font-size: 0.85rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.file-size { font-size: 0.72rem; opacity: 0.7; margin-top: 1px; }
+.file-download {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tan); color: var(--navy-deep);
+  transition: filter 0.15s ease;
+}
+.bubble.own .file-download { background: rgba(255,255,255,0.2); color: var(--white); }
+.file-download:hover { filter: brightness(1.1); }
+
+/* ---------------- lightbox ---------------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(20,17,10,0.9);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: pop-in 0.15s ease;
+}
+.lightbox img {
+  max-width: 92vw; max-height: 92vh;
+  border-radius: 10px;
+}
+
+/* ---------------- error bar ---------------- */
+.error-bar {
+  max-width: 640px;
+  width: calc(100% - 28px);
+  margin: 0 auto 10px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fbdede;
+  color: var(--error);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* ---------------- composer ---------------- */
+.composer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border-top: 1px solid rgba(107,68,35,0.14);
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+.composer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+.attach-btn { background: var(--tan-soft); color: var(--brown); border-color: transparent; }
+.attach-btn:hover { background: var(--tan); color: var(--navy-deep); }
+
+.attach-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px 0;
+}
+.attach-preview-box { position: relative; flex-shrink: 0; display: flex; align-items: center; }
+.attach-thumb { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; display: block; }
+.attach-file-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid rgba(107,68,35,0.18);
+  border-radius: 10px; padding: 8px 12px; max-width: 220px;
+}
+.attach-file-chip .file-icon { width: 26px; height: 26px; flex-shrink: 0; }
+.attach-file-name { font-size: 0.82rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.attach-remove {
+  position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 999px;
+  border: 2px solid var(--cream); background: var(--error); color: var(--white);
+  font-size: 0.85rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0;
+}
+.attach-notice { flex: 1; min-width: 0; font-size: 0.74rem; color: var(--brown); opacity: 0.85; }
+
+.message-input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(107,68,35,0.2);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+}
+.message-input:focus { border-color: var(--tan); }
+
+.send-btn {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 999px; border: none;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--navy); color: var(--white); cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.send-btn:hover:not(:disabled) { transform: scale(1.06); }
+.send-btn:disabled { opacity: 0.35; cursor: default; }
+
+@media (max-width: 420px) {
+  .bubble-col { max-width: 82%; }
+  .file-image { max-width: 170px; max-height: 170px; }
+}
+
+/* ---------- drag & drop ---------- */
+#chatApp.dragover::after {
+  content: 'Drop file to attach';
+  position: absolute;
+  inset: 0;
+  background: rgba(38, 42, 103, 0.85);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  z-index: 9999;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- admin ---------- */
+.brand-logo { user-select: none; -webkit-user-select: none; }
+#messages { padding-top: 44px; }
+
+.admin-pill {
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em;
+  background: var(--error); color: var(--white);
+  border-radius: 999px; padding: 2px 7px; margin-left: 8px; vertical-align: middle;
+}
+.brand-name .admin-pill { color: var(--white); }
+.admin-bar, .admin-banned-bar {
+  background: #f3e3c4; border-bottom: 1px solid rgba(107,68,35,0.2);
+  padding: 8px 16px; flex-shrink: 0; width: 100%;
+}
+.admin-banned-bar { background: #fce9e9; border-bottom-color: #e8c3c3; }
+.admin-bar-inner { max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
+.admin-tag {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--error); flex-shrink: 0;
+}
+.banned-tag { color: #992222; }
+.admin-users, .admin-banned-users {
+  display: flex; flex-wrap: wrap; gap: 8px; flex: 1; min-width: 0;
+  max-height: 110px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.admin-banned-users::-webkit-scrollbar, .admin-users::-webkit-scrollbar { width: 6px; }
+.admin-banned-users::-webkit-scrollbar-thumb, .admin-users::-webkit-scrollbar-thumb { background: rgba(107,68,35,0.3); border-radius: 999px; }
+.admin-user {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--surface); border-radius: 999px; padding: 3px 4px 3px 12px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.admin-user .avatar.mini { margin: 0; }
+.admin-empty { font-size: 0.78rem; color: var(--brown); opacity: 0.7; }
+.admin-btn {
+  border: none; border-radius: 999px; padding: 4px 10px; cursor: pointer;
+  font-size: 0.7rem; font-weight: 700; background: var(--tan-soft); color: var(--brown);
+}
+.admin-btn:hover { filter: brightness(0.95); }
+.admin-btn.danger { background: var(--error); color: var(--white); }
+
+.msg-row.deleted .bubble {
+  background: var(--surface) !important;
+  border: 2px dotted var(--error) !important;
+  color: var(--error) !important;
+  box-shadow: none !important;
+}
+.msg-row.deleted .bubble .mention { color: var(--error) !important; }
+
+/* ---------- modal ---------- */
+.modal {
+  position: fixed; inset: 0; z-index: 120; padding: 24px;
+  background: rgba(20,17,10,0.6);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-card {
+  width: 100%; max-width: 320px; background: var(--surface); border-radius: 18px; padding: 22px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-card h2 { margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--navy); }
+.modal-card input {
+  padding: 12px 16px; border-radius: 999px; border: 1.5px solid rgba(107,68,35,0.25);
+  font-family: inherit; font-size: 0.95rem; outline: none;
+  background: var(--surface); color: var(--ink);
+}
+.modal-card input:focus { border-color: var(--tan); }
+.modal-error { margin: 0; color: var(--error); font-size: 0.82rem; font-weight: 600; }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+.btn-soft { background: var(--tan-soft); color: var(--brown); }
+.btn-soft:hover { filter: brightness(0.96); }
+
+/* ---------- timestamps ---------- */
+.divider { font-size: 0.72rem; opacity: 0.7; }
+.sender-time { color: var(--brown); opacity: 0.6; font-weight: 500; margin-left: 6px; }
+.msg-time {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 0.68rem; color: var(--brown); white-space: nowrap;
+  opacity: 0; transition: opacity 0.12s ease; pointer-events: none;
+}
+.msg-row.own .msg-time { right: 100%; margin-right: 8px; }
+.msg-row.other .msg-time { left: 100%; margin-left: 8px; }
+.bubble-wrap:hover .msg-time, .msg-row.menu-open .msg-time { opacity: 0.8; }
+
+/* ---------- bubble wrapper + hover menu ---------- */
+.bubble-wrap { position: relative; display: flex; flex-direction: column; max-width: 100%; }
+.msg-row.own .bubble-wrap { align-items: flex-end; }
+.msg-row.other .bubble-wrap { align-items: flex-start; }
+
+.msg-actions {
+  position: absolute; bottom: 100%; padding-bottom: 4px; z-index: 5;
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.12s ease;
+}
+.msg-actions.own { right: 0; }
+.msg-actions.other { left: 0; }
+.bubble-wrap:hover .msg-actions, .msg-row.menu-open .msg-actions {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+.act-pill {
+  display: flex; background: var(--surface); border: 1px solid rgba(107,68,35,0.18);
+  border-radius: 999px; padding: 3px;
+}
+.act-main, .act-picker { display: flex; gap: 2px; }
+.act-picker { display: none; }
+.msg-actions.picking .act-main { display: none; }
+.msg-actions.picking .act-picker { display: flex; }
+.act-btn, .act-emoji {
+  width: 28px; height: 28px; border: none; border-radius: 999px; background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--brown); font-size: 1rem; padding: 0;
+}
+.act-btn svg {
+  width: 16px; height: 16px; fill: none; stroke: currentColor;
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+.act-btn:hover, .act-emoji:hover { background: var(--tan-soft); }
+.act-btn.danger { color: var(--error); }
+
+/* ---------- reactions ---------- */
+.reactions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.msg-row.own .reactions { justify-content: flex-end; }
+.reaction-chip {
+  border: 1px solid rgba(107,68,35,0.2); background: var(--surface); color: var(--ink);
+  border-radius: 999px; padding: 4px 11px; font-size: 1.05rem; line-height: 1.2;
+  cursor: pointer; font-family: inherit;
+}
+.reaction-chip.mine { background: var(--tan-soft); border-color: var(--tan); }
+
+/* ---------- replies, mentions, whispers ---------- */
+.reply-quote {
+  border-left: 3px solid var(--tan); background: rgba(0,0,0,0.05);
+  border-radius: 0 8px 8px 0; padding: 3px 8px; margin-bottom: 6px;
+  font-size: 0.78rem; cursor: pointer; max-width: 240px;
+}
+.bubble.own .reply-quote { border-left-color: #fed86f; background: rgba(255,255,255,0.14); }
+.reply-quote-name { font-weight: 700; }
+.reply-quote-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.85; }
+.bubble.file-bubble .reply-quote, .bubble.file-bubble .whisper-label { margin: 2px 6px 6px; }
+.bubble.file-bubble .bubble-text { padding: 8px 6px 4px; margin: 0; display: block; width: 100%; }
+
+.mention { font-weight: 700; color: #26408b; }
+.bubble.own .mention { color: #fed86f; }
+.mention-me { background: rgba(187,138,76,0.3); border-radius: 4px; padding: 0 3px; }
+.bubble.mentions-me { box-shadow: 0 0 0 2px var(--tan); }
+
+.bubble.whisper { background: #efe6f8; color: #2b1a3d; border: 1px dashed #6b3fa0; }
+.bubble.own.whisper { background: #6b3fa0; color: var(--white); border: 1px dashed rgba(255,255,255,0.5); }
+.whisper-label {
+  font-size: 0.64rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  opacity: 0.75; margin-bottom: 3px;
+}
+
+.msg-row.flash .bubble { animation: flash 1.2s ease; }
+@keyframes flash {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  30% { box-shadow: 0 0 0 4px var(--tan); }
+}
+
+/* ---------- file previews ---------- */
+.file-footer { display: flex; align-items: center; gap: 8px; padding: 6px 4px 2px; width: 100%; }
+.file-stack .audio-player { min-width: 0; }
+
+.text-preview {
+  position: relative; max-height: 92px; overflow: hidden; cursor: pointer;
+  background: #f6f0e6; border-radius: 10px; padding: 8px 10px;
+}
+.bubble.own .text-preview { background: #353a82; }
+.text-preview pre {
+  margin: 0; font: 0.72rem/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap; word-break: break-word;
+}
+.text-preview::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 30px;
+  background: linear-gradient(to bottom, rgba(246,240,230,0), #f6f0e6);
+}
+.bubble.own .text-preview::after { background: linear-gradient(to bottom, rgba(53,58,130,0), #353a82); }
+
+.text-viewer {
+  background: var(--surface); color: var(--ink); border-radius: 14px;
+  width: min(760px, 92vw); max-height: 86vh; overflow: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.text-viewer-head {
+  position: sticky; top: 0; display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; background: var(--navy); color: var(--white); font-weight: 700;
+}
+.text-viewer-name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.text-viewer pre {
+  margin: 0; padding: 16px; font: 0.82rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap; word-break: break-word;
+}
+
+/* ---------- composer extras ---------- */
+.ctx-bar {
+  width: 100%; max-width: 640px; margin: 0 auto; flex-shrink: 0;
+  display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+  background: var(--tan-soft); color: var(--brown); font-size: 0.8rem;
+  border-top: 1px solid rgba(107,68,35,0.14);
+}
+.ctx-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ctx-line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ctx-whisper { color: #6b3fa0; font-weight: 700; }
+.ctx-close {
+  border: none; background: transparent; color: var(--brown);
+  font-size: 1.3rem; line-height: 1; cursor: pointer; padding: 0 4px;
+}
+
+.composer { position: relative; }
+.mention-menu {
+  position: absolute; bottom: 100%; left: 12px; right: 12px; margin: 0 0 6px; padding: 6px;
+  list-style: none; background: var(--surface); border: 1px solid rgba(107,68,35,0.18);
+  border-radius: 14px; box-shadow: 0 8px 24px rgba(25,28,71,0.18); z-index: 10;
+}
+.mention-menu li {
+  display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: 9px; cursor: pointer; font-size: 0.9rem; font-weight: 600;
+}
+.mention-menu li.active, .mention-menu li:hover { background: var(--tan-soft); }
+.avatar.mini { width: 22px; height: 22px; font-size: 0.66rem; }
+
+/* ---------- history ---------- */
+.load-earlier {
+  align-self: center; border: none; background: var(--tan-soft); color: var(--brown);
+  font-family: inherit; font-weight: 700; font-size: 0.75rem;
+  padding: 6px 14px; border-radius: 999px; cursor: pointer; margin-bottom: 8px;
+}
+.load-earlier:hover { filter: brightness(0.96); }
+
+/* ---------- settings modal (fixed layout) ---------- */
+.settings-card { 
+  max-width: 380px; 
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.settings-section { display: flex; flex-direction: column; gap: 6px; }
+.settings-row { flex-direction: row; align-items: center; justify-content: space-between; }
+.settings-label { font-size: 0.8rem; font-weight: 700; color: var(--brown); }
+#settingsName {
+  padding: 11px 16px; border-radius: 999px; border: 1.5px solid rgba(107,68,35,0.22);
+  font-family: inherit; font-size: 0.92rem; outline: none; background: var(--surface); color: var(--ink);
+}
+#settingsName:focus { border-color: var(--tan); }
+.settings-hint { margin: 4px 0 0; font-size: 0.76rem; color: var(--brown); opacity: 0.8; }
+
+.avatar-preview-row { 
+  display: flex; 
+  align-items: stretch; 
+  gap: 12px; 
+  height: 110px; 
+}
+.avatar-lg {
+  width: 110px !important;
+  height: 110px !important;
+  font-size: 3rem;
+}
+.avatar-modes { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  flex: 1; 
+}
+.avatar-modes button {
+  border: 1.5px solid rgba(107,68,35,0.2); background: transparent; color: var(--brown);
+  border-radius: 999px; padding: 8px 14px; font-family: inherit; font-weight: 700;
+  font-size: 0.8rem; cursor: pointer; text-align: left;
+}
+.avatar-modes button.active { background: var(--tan); color: var(--navy-deep); border-color: var(--tan); }
+
+.avatar-mode-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 4px;
+}
+.avatar-mode-body .btn { padding: 9px 16px; font-size: 0.85rem; align-self: flex-start; }
+.avatar-mode-body .settings-hint { margin: 0; }
+
+.avatar-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-upload-row .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+}
+
+.avatar-upload-row .settings-hint {
+  margin: 0;
+  flex: 1;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.avatar-colors { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px; }
+.avatar-colors.inactive { opacity: 0.3; pointer-events: none; }
+.avatar-color {
+  width: 28px; height: 28px; border-radius: 999px; padding: 0; cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+  outline: none;
+}
+.avatar-color:hover { transform: scale(1.12); }
+.avatar-color.active { border-color: var(--brown); }
+
+.avatar-link-row { display: flex; gap: 6px; }
+.avatar-link-row input {
+  flex: 1; min-width: 0; padding: 9px 14px; border-radius: 999px; border: 1.5px solid rgba(107,68,35,0.22);
+  font-family: inherit; font-size: 0.85rem; outline: none; background: var(--surface); color: var(--ink);
+}
+.avatar-link-row input:focus { border-color: var(--tan); }
+.avatar-link-row .btn { padding: 9px 16px; font-size: 0.85rem; flex-shrink: 0; }
+
+/* dark-mode toggle switch */
+.switch {
+  width: 44px; height: 26px; border-radius: 999px; border: none; background: rgba(107,68,35,0.25);
+  position: relative; cursor: pointer; padding: 0; flex-shrink: 0; transition: background 0.15s ease;
+}
+.switch-knob {
+  position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 999px;
+  background: var(--white); transition: transform 0.15s ease;
+}
+.switch.on { background: var(--navy); }
+.switch.on .switch-knob { transform: translateX(18px); }
+
+/* ---------- custom ban durations ---------- */
+.ban-presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.ban-presets button {
+  border: 1.5px solid rgba(107,68,35,0.2); background: transparent; color: var(--brown);
+  border-radius: 999px; padding: 6px 12px; font-family: inherit; font-weight: 700;
+  font-size: 0.78rem; cursor: pointer;
+}
+.ban-presets button:hover { background: var(--tan-soft); }
+
+.ban-custom { display: flex; gap: 6px; align-items: center; }
+.ban-custom-group {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid rgba(107,68,35,0.22);
+  border-radius: 999px;
+  background: var(--surface);
+  overflow: hidden;
+  flex: 1;
+}
+.ban-custom-group input {
+  border: none !important;
+  background: transparent !important;
+  text-align: center;
+  padding: 9px 0 !important;
+  width: 100%;
+  -moz-appearance: textfield;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+}
+.ban-custom-group input::-webkit-outer-spin-button,
+.ban-custom-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ban-step-btn {
+  background: var(--tan-soft);
+  border: none;
+  color: var(--brown);
+  font-size: 1.1rem;
+  font-weight: 800;
+  width: 34px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.ban-step-btn:hover { background: var(--tan); color: var(--navy-deep); }
+.ban-custom .btn { padding: 9px 16px; font-size: 0.82rem; flex-shrink: 0; }
+
+/* ---------- emoji picker ---------- */
+.emoji-panel {
+  position: absolute; bottom: 100%; left: 12px; margin-bottom: 6px; padding: 6px;
+  display: grid; grid-template-columns: repeat(8, 1fr); gap: 1px;
+  background: var(--surface); border: 1px solid rgba(107,68,35,0.18);
+  border-radius: 14px; box-shadow: 0 8px 24px rgba(25,28,71,0.18); z-index: 15;
+  width: 264px; max-width: calc(100vw - 24px);
+}
+.emoji-pick {
+  border: none; background: transparent; font-size: 1.2rem; line-height: 1.6;
+  border-radius: 8px; cursor: pointer;
+}
+.emoji-pick:hover { background: var(--tan-soft); }
+
+/* =====================================================
+   dark mode
+   ===================================================== */
+body.dark {
+  --cream: #14172a;
+  --surface: #1f2447;
+  --ink: #eef0fb;
+  --tan-soft: #2a2f57;
+  --brown: #c2a878;
+  --line: rgba(255,255,255,0.10);
+  --line-strong: rgba(255,255,255,0.18);
+}
+body.dark .admin-bar { background: #241f42; border-bottom-color: rgba(255,255,255,0.1); }
+body.dark .admin-banned-bar { background: #3a1c24; border-bottom-color: #5c2833; }
+body.dark .text-preview { background: #262b52; }
+body.dark .text-preview::after { background: linear-gradient(to bottom, rgba(38,43,82,0), #262b52); }
+body.dark .bubble.whisper:not(.own) { background: #2e2148; color: #e7defb; border-color: #9b7fd6; }
+body.dark .bubble.other .mention { color: #9db4ff; }
+body.dark .bubble.other .reply-quote { background: rgba(255,255,255,0.08); }
+body.dark .error-bar { background: #402226; }
+body.dark .switch { background: rgba(255,255,255,0.18); }
+
+body.dark .modal { background: rgba(0,0,0,0.72); }
+body.dark .modal-card {
+  background: #232852;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+}
+body.dark .modal-card h2 { color: var(--white); }
+body.dark .settings-label { color: #d9c7a3; }
+body.dark .avatar-modes button {
+  border-color: rgba(255,255,255,0.18);
+  color: var(--ink);
+  background: rgba(255,255,255,0.03);
+}
+body.dark .avatar-modes button.active {
+  background: var(--tan);
+  border-color: var(--tan);
+  color: var(--navy-deep);
+}
+body.dark .modal-card input,
+body.dark .avatar-link-row input,
+body.dark .ban-custom input,
+body.dark #settingsName {
+  background: #1a1e3c;
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.16);
+}
+body.dark .ban-custom-group { border-color: rgba(255,255,255,0.16); }
+body.dark .ban-custom-group input { color: var(--ink); }
+body.dark .settings-hint { color: #b9b2c9; opacity: 0.9; }
+body.dark .switch { background: rgba(255,255,255,0.22); }
+body.dark .switch.on { background: var(--tan); }
+body.dark .music-preview,
+body.dark .font-preview { background: #2a2f57; }
+body.dark .music-preview-label,
+body.dark .font-sample { color: var(--ink); }
+body.dark .bubble.other { border-color: rgba(255,255,255,0.08); }
+body.dark .avatar-color.active { box-shadow: none; border-color: var(--brown); }
+
+/* =====================================================
+   font & music viewers
+   ===================================================== */
+.font-preview {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 90px; min-height: 64px; padding: 10px 16px;
+  background: #fbf8f2; border-radius: 10px; cursor: pointer;
+}
+.bubble.own .font-preview { background: rgba(255,255,255,0.12); }
+.font-sample { font-size: 1.8rem; line-height: 1; color: var(--ink); }
+.bubble.own .font-sample { color: var(--white); }
+
+.font-viewer {
+  width: min(820px, 94vw);
+  height: min(86vh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.font-viewer .text-viewer-head { flex-shrink: 0; }
+.font-viewer-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 18px 24px;
+}
+.glyph-loading { color: var(--brown); font-size: 0.88rem; padding: 4px 2px; }
+
+.glyph-toolbar {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  padding: 10px 14px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; margin-bottom: 12px;
+}
+.glyph-tool { display: flex; align-items: center; gap: 7px; font-size: 0.76rem; font-weight: 700; color: var(--brown); white-space: nowrap; }
+.glyph-tool input[type=range] { width: 100px; accent-color: var(--tan); cursor: pointer; }
+.glyph-tool input[type=search] {
+  font-family: inherit; font-size: 0.82rem; color: var(--ink); background: var(--surface);
+  border: 1.5px solid var(--line-strong); border-radius: 999px; padding: 7px 13px; width: 170px; outline: none;
+}
+.glyph-tool input[type=search]:focus { border-color: var(--tan); }
+.glyph-switch-inline { cursor: pointer; user-select: none; }
+.glyph-switch-inline input { accent-color: var(--tan); width: 14px; height: 14px; cursor: pointer; }
+.glyph-sep { width: 1px; height: 20px; background: var(--line-strong); }
+
+.glyph-info { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.glyph-chip { font-size: 0.68rem; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: var(--tan-soft); color: var(--brown); }
+.glyph-chip strong { color: var(--navy); font-weight: 800; }
+body.dark .glyph-chip strong { color: var(--white); }
+.glyph-chip.accent { background: var(--tan); color: var(--navy-deep); }
+
+.glyph-typetest { margin: 0 0 18px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.glyph-typetest label { display: block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 1px; color: var(--brown); margin-bottom: 8px; font-weight: 800; }
+.glyph-typetest textarea {
+  width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink);
+  font-family: var(--gff, inherit); font-size: clamp(18px, 2.6vw, 30px); line-height: 1.25; resize: none; padding: 0;
+}
+
+.glyph-section { margin-top: 20px; }
+.glyph-section h3 { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 1.1px; color: var(--brown); margin: 0 0 10px; font-weight: 800; display: flex; gap: 8px; align-items: center; }
+.glyph-count { background: var(--tan); color: var(--navy-deep); border-radius: 999px; padding: 2px 9px; font-size: 0.62rem; font-weight: 800; }
+.glyph-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(max(54px, calc(var(--glyph-size, 28px) * 1.6)), 1fr)); gap: 6px; }
+.glyph-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  padding: 10px 4px 7px; min-height: 62px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; cursor: pointer; font: inherit; color: inherit; overflow: hidden;
+}
+.glyph-cell:hover { background: var(--tan-soft); border-color: var(--tan-soft); }
+.glyph-gl { font-family: var(--gff, inherit); font-size: var(--glyph-size, 28px); line-height: 1.1; display: block; text-align: center; white-space: nowrap; color: var(--ink); }
+.glyph-gl.seq { font-size: calc(var(--glyph-size, 28px) * .58); font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "dlig" 1; }
+.font-viewer.noliga .glyph-gl.seq { font-feature-settings: "liga" 0, "clig" 0, "calt" 0, "dlig" 0; }
+.glyph-cp { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.56rem; color: var(--brown); opacity: 0.75; }
+.glyph-more { margin-top: 12px; }
+
+.glyph-toast {
+  position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%) translateY(10px);
+  background: var(--navy); color: var(--white); padding: 9px 16px; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 700; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none; z-index: 30; box-shadow: 0 8px 20px rgba(25,28,71,0.18); white-space: nowrap;
+}
+.glyph-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.music-preview {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; min-width: 190px;
+  background: #fbf8f2; border-radius: 10px; cursor: pointer;
+}
+.bubble.own .music-preview { background: rgba(255,255,255,0.12); }
+.music-preview-icon {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--navy);
+}
+.music-preview-icon svg { width: 16px; height: 16px; }
+.music-preview-label { font-weight: 700; font-size: 0.85rem; color: var(--ink); }
+.bubble.own .music-preview-label { color: var(--white); }
+
+.music-viewer {
+  width: min(820px, 94vw);
+  height: min(86vh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.music-viewer .text-viewer-head { flex-shrink: 0; }
+.music-viewer .text-viewer-head .icon-btn {
+  background: rgba(255,255,255,0.15); width: 30px; height: 30px;
+  font-size: 0.82rem; font-weight: 700;
+}
+.music-viewer .text-viewer-head .icon-btn:hover { background: rgba(255,255,255,0.28); }
+.music-viewer-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.music-hud { padding: 22px 26px; }
+.music-hud-status { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
+.music-hud-sub { margin-top: 4px; font-size: 0.8rem; color: var(--brown); }
+.music-bar-frame {
+  margin-top: 14px; height: 6px; border-radius: 999px;
+  background: var(--tan-soft); overflow: hidden;
+}
+.music-bar-fill { height: 100%; width: 0%; background: var(--tan); border-radius: 999px; }
+.music-bar-fill.error { background: var(--error); }
+.music-stage {
+  width: 100%; overflow-x: auto; background: #ffffff; padding: 12px;
+}
+.music-stage svg { display: block; margin: 0 auto; }
+
+/* =====================================================
+   toasts
+   ===================================================== */
+.toast-container {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 1000; pointer-events: none;
+}
+.toast-msg {
+  background: var(--navy-deep); color: var(--white); padding: 10px 20px;
+  border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: toast-in 0.3s ease, toast-out 0.3s ease 2.7s forwards;
+}
+@keyframes toast-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(10px); } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="toast-logo" viewBox="0 0 740 752">
+    <path fill-rule="evenodd" d="M56.86 273c.89-91.52 62.33-165.81 151.66-184.76 56.36-10.47 113.34 3.42 157.44 40.24q.66.49 1.47.43 7.85-5.65 15.65-11.45C490.2 45.21 634.67 98.01 670.81 221.54c19.14 71.44-.63 138.63-52.69 190.03q-.17 99.47-.3 198.93c-3.73 43.5-35.88 74.93-79.32 78.3q-169.5.09-339 0c-47.75-2.61-81.7-36.07-82.53-84.3q.01-96-.05-192-.18-1.14-.99-1.97C78.01 374.58 56.66 325.28 56.86 273zm63.56-.01c1.18 42.71 17.71 74.6 50.92 101.13q.81.67 1.12 1.68c.93 71.85-.48 144.72.75 216.43 3.43 23.41 22.48 41.91 46.35 43.05q147.94.42 295.89-.01c24.61-1.39 43.78-20.64 46.37-44.97q.29-107.28.56-214.55c.36-1.62 9.38-8.22 10.94-10.09 97.68-88.35 6.81-250.01-119.3-212.09-33.83 10.48-53.76 27.93-73.04 56.79-3.6.17-25.95 1.17-27.68-.17-68.78-108.07-230.95-64.85-232.88 62.8z" style="fill:#714c1e;stroke:#714c1e;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M120.42 272.99c1.93-127.65 164.1-170.87 232.88-62.8 1.73 1.34 24.08.34 27.68.17 19.28-28.86 39.21-46.31 73.04-56.79C580.13 115.65 671 277.31 573.32 365.66c-1.56 1.87-10.58 8.47-10.94 10.09q-.27 107.27-.56 214.55c-2.59 24.33-21.76 43.58-46.37 44.97q-147.95.43-295.89.01c-23.87-1.14-42.92-19.64-46.35-43.05-1.23-71.71.18-144.58-.75-216.43q-.31-1.01-1.12-1.68c-33.21-26.53-49.74-58.42-50.92-101.13zM464 232c2.95 36.16 54.84 28.71 48.62-5.28-7.08-28.48-47.09-24.68-48.62 5.28zm-273.28 41c2.81 74.02 108.35 70.8 109.16.49-.8-71.5-106.7-72.79-109.16-.49zm231.11 0c.94 31.7 46.1 33.33 48.94 1.44.05-32.4-46.29-34.82-48.94-1.44zm86.16 1c2.55 34.08 52.48 29.77 48.71-4.36-5.74-29.67-47.83-26.51-48.71 4.36zM464 315c3.6 37.32 54.94 28.38 48.54-5.25-7.06-28.11-46.97-24.36-48.54 5.25z" style="fill:#b28d56;stroke:#b28d56;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M507.99 274c.88-30.87 42.97-34.03 48.71-4.36 3.77 34.13-46.16 38.44-48.71 4.36z" style="fill:#3a7524;stroke:#3a7524;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M421.83 273c2.65-33.38 48.99-30.96 48.94 1.44-2.84 31.89-48 30.26-48.94-1.44z" style="fill:#fed86f;stroke:#fed86f;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M190.72 273c2.46-72.3 108.36-71.01 109.16.49-.81 70.31-106.35 73.53-109.16-.49z" style="fill:#000;stroke:#000;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M464 315c1.57-29.61 41.48-33.36 48.54-5.25 6.4 33.63-44.94 42.57-48.54 5.25z" style="fill:#2a2d70;stroke:#2a2d70;stroke-width:.5"/>
+    <path fill-rule="evenodd" d="M464 232c1.53-29.96 41.54-33.76 48.62-5.28 6.22 33.99-45.67 41.44-48.62 5.28z" style="fill:#ca0813;stroke:#ca0813;stroke-width:.5"/>
+  </symbol>
+</svg>
+
+<!-- ============ NAME GATE ============ -->
+<div id="nameGate" class="gate" hidden>
+  <div class="gate-card">
+    <svg class="gate-logo" viewBox="0 0 740 752"><use href="#toast-logo"></use></svg>
+    <h1>Welcome to Toasterchat</h1>
+    <p class="gate-sub">The shoutroom for toastercade. Pick a name to jump in.</p>
+    <form id="nameForm" autocomplete="off">
+      <input type="text" id="nameInput" placeholder="Your name" maxlength="24" required autofocus>
+      <button type="submit" class="btn btn-primary">Join chat</button>
+    </form>
+    <p class="gate-hint">Saved on this device, so you won't be asked again.</p>
+  </div>
+</div>
+
+<!-- ============ CHAT APP ============ -->
+<div id="chatApp" hidden>
+  <header class="chat-header">
+    <div class="header-inner">
+      <div class="brand">
+        <svg class="brand-logo" id="brandLogo" viewBox="0 0 740 752"><use href="#toast-logo"></use></svg>
+        <div class="brand-text">
+          <div class="brand-name">toaster<span>chat</span><span class="admin-pill" id="adminPill" hidden>ADMIN</span></div>
+          <div class="brand-tagline" id="onlineCount"></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="presence-list" id="presenceList"></div>
+        <button type="button" class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="adminBar" class="admin-bar" hidden>
+    <div class="admin-bar-inner">
+      <span class="admin-tag">Online</span>
+      <div class="admin-users" id="adminUsers"></div>
+      <button type="button" class="admin-btn" id="adminExit">Exit</button>
+    </div>
+  </div>
+
+  <div id="adminBannedBar" class="admin-banned-bar" hidden>
+    <div class="admin-bar-inner">
+      <span class="admin-tag banned-tag">Banned</span>
+      <div class="admin-banned-users" id="adminBannedUsers"></div>
+    </div>
+  </div>
+
+  <div id="messages-wrapper">
+    <main id="messages"></main>
+    <button id="scrollToBottomBtn" class="scroll-bottom-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Scroll to bottom</span>
+    </button>
+  </div>
+
+  <p id="errorBar" class="error-bar" hidden></p>
+
+  <div id="ctxBar" class="ctx-bar" hidden>
+    <div class="ctx-text" id="ctxText"></div>
+    <button type="button" class="ctx-close" id="ctxClose" aria-label="Cancel reply">&times;</button>
+  </div>
+
+  <footer class="composer">
+    <div id="attachBar" class="attach-bar" hidden>
+      <div id="attachPreviewBox" class="attach-preview-box"></div>
+      <p class="attach-notice">Messages are limited to one file (max 500 KB) — attaching another will replace this one.</p>
+    </div>
+    <div class="composer-row">
+      <button type="button" class="icon-btn attach-btn" id="attachBtn" title="Attach a file (or drag & drop/paste)" aria-label="Attach a file">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+      </button>
+      <input type="file" id="fileInput" hidden>
+      <button type="button" class="icon-btn attach-btn" id="emojiBtn" title="Emoji" aria-label="Insert emoji">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><path d="M9 9h.01M15 9h.01"></path></svg>
+      </button>
+      <div id="emojiPanel" class="emoji-panel" hidden></div>
+      <ul id="mentionMenu" class="mention-menu" hidden></ul>
+      <input type="text" id="messageInput" class="message-input" placeholder="Message" maxlength="500" autocomplete="off">
+      <button type="button" class="send-btn" id="sendBtn" disabled aria-label="Send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ SETTINGS ============ -->
+<div id="settingsModal" class="modal" hidden>
+  <div class="modal-card settings-card">
+    <h2 id="settingsTitle">Settings</h2>
+
+    <div class="settings-section">
+      <label class="settings-label" for="settingsName">Name</label>
+      <input type="text" id="settingsName" maxlength="24" autocomplete="off">
+    </div>
+
+    <div class="settings-section">
+      <label class="settings-label">Profile picture</label>
+      <div class="avatar-preview-row">
+        <div class="avatar avatar-lg" id="avatarPreview"></div>
+        <div class="avatar-modes" id="avatarModes">
+          <button type="button" data-mode="initials">Initials</button>
+          <button type="button" data-mode="upload">Upload</button>
+          <button type="button" data-mode="link">Link</button>
+        </div>
+      </div>
+      <div class="avatar-mode-body" id="avatarModeBody"></div>
+      <div class="avatar-colors" id="avatarColors" aria-label="Profile color"></div>
+      <input type="file" id="avatarFileInput" accept="image/*" hidden>
+    </div>
+
+    <div class="settings-section settings-row" id="previewsRow">
+      <label class="settings-label" for="previewsToggle">Show previews</label>
+      <button type="button" id="previewsToggle" class="switch" aria-pressed="true"><span class="switch-knob"></span></button>
+    </div>
+
+    <div class="settings-section settings-row" id="darkModeRow">
+      <label class="settings-label" for="darkToggle">Dark mode</label>
+      <button type="button" id="darkToggle" class="switch" aria-pressed="false"><span class="switch-knob"></span></button>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" id="settingsCancel" class="btn btn-soft">Cancel</button>
+      <button type="button" id="settingsSave" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BAN DURATION ============ -->
+<div id="banModal" class="modal" hidden>
+  <div class="modal-card">
+    <h2>Ban <span id="banModalName"></span></h2>
+    <div class="ban-presets" id="banPresets">
+      <button type="button" data-min="1">1 min</button>
+      <button type="button" data-min="5">5 min</button>
+      <button type="button" data-min="15">15 min</button>
+      <button type="button" data-min="60">1 hour</button>
+      <button type="button" data-min="1440">1 day</button>
+    </div>
+    <div class="ban-custom">
+      <div class="ban-custom-group">
+        <button type="button" class="ban-step-btn" id="banMinusBtn">-</button>
+        <input type="number" id="banCustomInput" min="1" placeholder="Minutes" value="1">
+        <button type="button" class="ban-step-btn" id="banPlusBtn">+</button>
+      </div>
+      <button type="button" id="banCustomBtn" class="btn btn-primary">Ban</button>
+    </div>
+    <div class="modal-actions">
+      <button type="button" id="banCancel" class="btn btn-soft">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN PASSWORD ============ -->
+<div id="adminModal" class="modal" hidden>
+  <form id="adminForm" class="modal-card" autocomplete="off">
+    <h2>Admin</h2>
+    <input type="password" id="adminPass" placeholder="Password" autocomplete="off">
+    <p id="adminError" class="modal-error" hidden>Wrong password.</p>
+    <div class="modal-actions">
+      <button type="button" id="adminCancel" class="btn btn-soft">Cancel</button>
+      <button type="submit" class="btn btn-primary">Unlock</button>
+    </div>
+  </form>
+</div>
+
+<!-- ============ KICKED / BANNED ============ -->
+<div id="blockScreen" class="gate" hidden>
+  <div class="gate-card">
+    <svg class="gate-logo" viewBox="0 0 740 752"><use href="#toast-logo"></use></svg>
+    <h1 id="blockTitle"></h1>
+    <p class="gate-sub" id="blockText"></p>
+    <button type="button" id="blockBtn" class="btn btn-primary">Rejoin</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script>
+/* ============================================================
+   CHANGE THIS TO A RANDOM STRING before you deploy — anyone who
+   knows this topic string can read and post to your shoutroom.
+   ============================================================ */
+const topic = 'toastercade/shoutroom/7f3k9d2m';
+// ============================================================
+
+const presenceTopic = topic + '/presence'; // retained: who's online
+const histTopic = topic + '/h';            // retained: last 50 messages, one topic each
+const ctlBase = topic + '/ctl';            // kick commands, one topic per person
+const banBase = topic + '/ban';            // retained bans, one topic per person
+
+const brokerUrl = 'wss://broker.emqx.io:8084/mqtt';
+
+const ADMIN_PASSWORD = 'H@!rball';
+
+const MAX_FILE_SIZE = 500 * 1024;
+
+const HISTORY_KEEP = 50;
+const HISTORY_SHOW = 15;
+const DIVIDER_GAP = 10 * 60 * 1000;
+const REACTIONS = ['👍', '👎', '😊', '😢', '😂', '❤️', '🔥', '🎉', '😮', '😡'];
+const EMOJI_PICKS = ['😀', '😂', '🥰', '😍', '😎', '🤔', '😢', '😭', '😡', '😱', '🥳', '😴', '🙃', '😉', '😇', '🤯', '🥲', '😬', '🤗', '🙄', '👍', '👎', '👏', '🙌', '🙏', '👌', '✌️', '🤞', '💪', '🔥', '✨', '🎉', '💯', '❤️', '💔', '💖', '⭐', '☀️', '🌙', '☕', '🍕', '🍔', '🍟', '🍩', '🎮', '⚽', '🚗', '😅'];
+
+const NAME_COLORS = ['#ca0813', '#cfa602', '#3a7524', '#26408b', '#6b3fa0', '#c8660f', '#00868B', '#D81B60', '#714c1e', '#0077C2'];
+
+const NAME_KEY = 'toasterchat_name';
+const ID_KEY = 'toasterchat_clientid';
+const ADMIN_KEY = 'toasterchat_admin';
+const AVATAR_KEY = 'toasterchat_avatar';
+const DARK_KEY = 'toasterchat_dark';
+const PREVIEWS_KEY = 'toasterchat_show_previews';
+const AVATAR_SIZE = 120;
+
+const IMAGE_EXTS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'bmp'];
+const AUDIO_EXTS = ['mp3', 'wav', 'ogg', 'm4a', 'flac', 'aac'];
+const VIDEO_EXTS = ['mp4', 'webm', 'mov', 'avi', 'mkv'];
+const FONT_EXTS = ['ttf', 'otf', 'woff', 'woff2'];
+const MUSIC_EXTS = ['mxl', 'musicxml'];
+const GLYPH_SECTIONS = [
+  { name: 'Uppercase', chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+  { name: 'Lowercase', chars: 'abcdefghijklmnopqrstuvwxyz' },
+  { name: 'Numerals', chars: '0123456789' },
+  { name: 'Fractions \u00b7 Sub & Superscript',
+    chars: '\u00bd\u2153\u2154\u00bc\u00be\u2155\u2156\u2157\u2158\u2159\u215a\u215b\u215c\u215d\u215e\u2150\u2151\u2152\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079\u207a\u207b\u207c\u207d\u207e\u207f\u2080\u2081\u2082\u2083\u2084\u2085\u2086\u2087\u2088\u2089\u208a\u208b\u208c\u208d\u208e' },
+  { name: 'Punctuation & Symbols',
+    chars: ' .,;:!?\'"`\u00b4\u2018\u2019\u201a\u201b\u201c\u201d\u201e\u201f\u00ab\u00bb\u2039\u203a()[]{}\u27e8\u27e9\u2013\u2014\u2015\u2010\u2011\u2012\u2026\u00b7\u2022\u2023\u2043\u2020\u2021\u00a7\u00b6\u00a1\u00bf\u2032\u2033\u2034\u2042\u203b\u203d\u2047\u2048\u2049/\\|~^*&%@#+=-_<>' },
+  { name: 'Currency',
+    chars: '$\u00a2\u00a3\u00a4\u00a5\u20a3\u20a4\u20a5\u20a6\u20a7\u20a8\u20a9\u20aa\u20ab\u20ac\u20ad\u20ae\u20af\u20b0\u20b1\u20b2\u20b3\u20b4\u20b5\u20b6\u20b7\u20b8\u20b9\u20ba\u20bb\u20bc\u20bd\u20be\u20bf' },
+  { name: 'Accented & Latin-1',
+    chars: '\u00c0\u00c1\u00c2\u00c3\u00c4\u00c5\u00c6\u00c7\u00c8\u00c9\u00ca\u00cb\u00cc\u00cd\u00ce\u00cf\u00d0\u00d1\u00d2\u00d3\u00d4\u00d5\u00d6\u00d8\u00d9\u00da\u00db\u00dc\u00dd\u00de\u00df\u00e0\u00e1\u00e2\u00e3\u00e4\u00e5\u00e6\u00e7\u00e8\u00e9\u00ea\u00eb\u00ec\u00ed\u00ee\u00ef\u00f0\u00f1\u00f2\u00f3\u00f4\u00f5\u00f6\u00f8\u00f9\u00fa\u00fb\u00fc\u00fd\u00fe\u00ff' },
+  { name: 'Latin Extended',
+    chars: '\u0100\u0101\u0102\u0103\u0104\u0105\u0106\u0107\u0108\u0109\u010a\u010b\u010c\u010d\u010e\u010f\u0110\u0111\u0112\u0113\u0114\u0115\u0116\u0117\u0118\u0119\u011a\u011b\u011c\u011d\u011e\u011f\u0120\u0121\u0122\u0123\u0124\u0125\u0126\u0127\u0128\u0129\u012a\u012b\u012c\u012d\u012e\u012f\u0130\u0131\u0132\u0133\u0134\u0135\u0136\u0137\u0138\u0139\u013a\u013b\u013c\u013d\u013e\u013f\u0140\u0141\u0142\u0143\u0144\u0145\u0146\u0147\u0148\u0149\u014a\u014b\u014c\u014d\u014e\u014f\u0150\u0151\u0152\u0153\u0154\u0155\u0156\u0157\u0158\u0159\u015a\u015b\u015c\u015d\u015e\u015f\u0160\u0161\u0162\u0163\u0164\u0165\u0166\u0167\u0168\u0169\u016a\u016b\u016c\u016d\u016e\u016f\u0170\u0171\u0172\u0173\u0174\u0175\u0176\u0177\u0178\u0179\u017a\u017b\u017c\u017d\u017e\u017f' },
+  { name: 'Ligatures & Sequences',
+    seqs: ['ff', 'fi', 'fl', 'ffi', 'ffl', 'ft', 'fj', 'st', 'ct', 'ss', 'sp', 'tt', 'Th', 'qu', 'and', 'of', 'the', 'No', '\u00e6', '\u0153'] },
+  { name: 'Math & Operators',
+    chars: '+-\u00d7\u00f7=\u2260\u2248\u2261\u2264\u2265\u00b1\u2213\u221e\u2211\u220f\u221a\u222b\u222e\u2202\u2207\u2206\u00b0\u00b5\u03a9\u03c0\u2205\u2208\u2209\u2282\u2283\u2286\u2287\u222a\u2229\u2227\u2228\u00ac\u2200\u2203\u2204\u221d\u2234\u2235\u2318\u2325\u21e7\u232b\u23ce' },
+  { name: 'Arrows',
+    chars: '\u2190\u2191\u2192\u2193\u2194\u2195\u2196\u2197\u2198\u2199\u21d0\u21d1\u21d2\u21d3\u21d4\u21d5\u27f5\u27f6\u27f7\u21e0\u21e2\u21a9\u21aa\u21ba\u21bb' },
+  { name: 'Shapes & Dingbats',
+    chars: '\u25a0\u25a1\u25aa\u25ab\u25ac\u25b2\u25bc\u25c0\u25b6\u25c6\u25c7\u25cb\u25cf\u25d8\u25d9\u2605\u2606\u2726\u2727\u2713\u2714\u2717\u2718\u261a\u2731\u2733\u2735\u2756\u2764\u2666\u2663\u2660\u266a\u266b\u2600\u2601\u2602\u2603\u263a\u263b\u2639\u2691\u2690' },
+];
+const TEXT_EXTS = ['txt', 'md', 'csv', 'tsv', 'json', 'xml', 'html', 'htm', 'css', 'js', 'ts', 'jsx', 'tsx', 'py', 'java', 'c', 'cpp', 'h', 'cs', 'go', 'rs', 'rb', 'php', 'sh', 'bat', 'yml', 'yaml', 'toml', 'ini', 'cfg', 'conf', 'log', 'sql', 'srt', 'vtt', 'rtf'];
+
+const FILE_ICON_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>';
+const DOWNLOAD_ICON_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M20 21H4"></path></svg>';
+const PLAY_ICON_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>';
+const PAUSE_ICON_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>';
+const REPLY_ICON = '<svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 6 6v3"></path></svg>';
+const SMILE_ICON = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><path d="M9 9h.01M15 9h.01"></path></svg>';
+const TRASH_ICON = '<svg viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m6 6 1 14h10l1-14"></path></svg>';
+
+// ---------- DOM ----------
+const $ = (id) => document.getElementById(id);
+const nameGate = $('nameGate');
+const chatApp = $('chatApp');
+const nameForm = $('nameForm');
+const nameInput = $('nameInput');
+const settingsBtn = $('settingsBtn');
+const brandLogo = $('brandLogo');
+const adminPill = $('adminPill');
+const adminBar = $('adminBar');
+const adminUsersEl = $('adminUsers');
+const adminExit = $('adminExit');
+const adminBannedBar = $('adminBannedBar');
+const adminBannedUsersEl = $('adminBannedUsers');
+const adminModal = $('adminModal');
+const adminForm = $('adminForm');
+const adminPass = $('adminPass');
+const adminError = $('adminError');
+const adminCancel = $('adminCancel');
+const messagesEl = $('messages');
+const scrollToBottomBtn = $('scrollToBottomBtn');
+const errorBar = $('errorBar');
+const ctxBar = $('ctxBar');
+const ctxText = $('ctxText');
+const ctxClose = $('ctxClose');
+const mentionMenu = $('mentionMenu');
+const attachBtn = $('attachBtn');
+const fileInput = $('fileInput');
+const messageInput = $('messageInput');
+const sendBtn = $('sendBtn');
+const presenceListEl = $('presenceList');
+const onlineCountEl = $('onlineCount');
+const blockScreen = $('blockScreen');
+const blockTitle = $('blockTitle');
+const blockText = $('blockText');
+const blockBtn = $('blockBtn');
+const settingsModal = $('settingsModal');
+const settingsTitle = $('settingsTitle');
+const settingsName = $('settingsName');
+const settingsCancel = $('settingsCancel');
+const settingsSave = $('settingsSave');
+const avatarPreview = $('avatarPreview');
+const avatarModes = $('avatarModes');
+const avatarModeBody = $('avatarModeBody');
+const avatarColors = $('avatarColors');
+const avatarFileInput = $('avatarFileInput');
+const darkToggle = $('darkToggle');
+const previewsToggle = $('previewsToggle');
+const previewsRow = $('previewsRow');
+const darkModeRow = $('darkModeRow');
+const banModal = $('banModal');
+const banModalName = $('banModalName');
+const banPresets = $('banPresets');
+const banCustomInput = $('banCustomInput');
+const banCustomBtn = $('banCustomBtn');
+const banMinusBtn = $('banMinusBtn');
+const banPlusBtn = $('banPlusBtn');
+const banCancel = $('banCancel');
+const emojiBtn = $('emojiBtn');
+const emojiPanel = $('emojiPanel');
+const attachBar = $('attachBar');
+const attachPreviewBox = $('attachPreviewBox');
+
+// ---------- Storage Fallback (Google Sites iframe safe) ----------
+const memoryStore = {};
+function getStorage(key) {
+  try {
+    const val = localStorage.getItem(key);
+    if (val !== null) return val;
+  } catch (e) {}
+  try {
+    const winData = JSON.parse(window.name || '{}');
+    if (winData[key] !== undefined) return winData[key];
+  } catch (e) {}
+  return memoryStore[key] || null;
+}
+function setStorage(key, value) {
+  memoryStore[key] = String(value);
+  try { localStorage.setItem(key, value); } catch (e) {}
+  try {
+    const winData = JSON.parse(window.name || '{}');
+    winData[key] = String(value);
+    window.name = JSON.stringify(winData);
+  } catch (e) {}
+}
+function removeStorage(key) {
+  delete memoryStore[key];
+  try { localStorage.removeItem(key); } catch (e) {}
+  try {
+    const winData = JSON.parse(window.name || '{}');
+    delete winData[key];
+    window.name = JSON.stringify(winData);
+  } catch (e) {}
+}
+
+// ---------- state ----------
+let client = null;
+let myName = '';
+let myClientId = '';
+let memClientId = null;
+let isAdmin = false;
+let myAvatar = { type: 'initials' };
+let avatarDraftMode = 'initials';
+let banTargetId = null;
+let banTargetName = null;
+let settingsTargetUser = null;
+let settingsDraft = null;
+const onlineUsers = new Map();
+const bannedUsers = new Map();
+
+let feed = [];
+let olderHistory = [];
+const messageEls = new Map();
+const seenIds = new Set();
+const deletedIds = new Set();
+const reactions = new Map();
+const histIds = new Map();
+
+let lastRender = null;
+let lastBubbleEl = null;
+let errorTimer = null;
+let currentlyPlayingAudio = null;
+let unreadCount = 0;
+let dragCounter = 0;
+
+let joinedOnce = false;
+let roomJoined = false;
+let historyStarted = false;
+let historyLoading = false;
+let histBatch = [];
+let pendingLive = [];
+let histTimer = null;
+
+let blocked = false;
+let left = false;
+let banTimer = null;
+
+let replyTarget = null;
+let pendingFile = null;
+let showPreviews = true;
+let mentionItems = [];
+let mentionIndex = 0;
+let mentionRange = null;
+
+const loadEarlierBtn = el('button', 'load-earlier');
+loadEarlierBtn.type = 'button';
+
+// ---------- small helpers ----------
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function lc(s) { return String(s == null ? '' : s).toLowerCase(); }
+function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function cryptoRandomId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function isDataUrl(s) { return typeof s === 'string' && /^data:[^,]*,/.test(s); }
+function validHexColor(c) { return typeof c === 'string' && /^#[0-9a-f]{6}$/i.test(c); }
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function colorForName(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
+  return NAME_COLORS[hash % NAME_COLORS.length];
+}
+
+function avatarColorFor(name, info) {
+  return (info && validHexColor(info.color)) ? info.color : colorForName(name);
+}
+
+function getClosestColor(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  let best = NAME_COLORS[0];
+  let minDist = Infinity;
+  NAME_COLORS.forEach(c => {
+    const cr = parseInt(c.slice(1, 3), 16);
+    const cg = parseInt(c.slice(3, 5), 16);
+    const cb = parseInt(c.slice(5, 7), 16);
+    const dist = Math.sqrt(Math.pow(r - cr, 2) + Math.pow(g - cg, 2) + Math.pow(b - cb, 2));
+    if (dist < minDist) { minDist = dist; best = c; }
+  });
+  return best;
+}
+
+function avatarInfo(clientId) {
+  const u = clientId && onlineUsers.get(clientId);
+  return u && u.avatar ? u.avatar : null;
+}
+
+function isNameTaken(name, excludeId) {
+  let taken = false;
+  onlineUsers.forEach((u, id) => {
+    if (id !== excludeId && lc(u.name) === lc(name)) taken = true;
+  });
+  return taken;
+}
+
+function showToast(text) {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = el('div', 'toast-container');
+    document.body.appendChild(container);
+  }
+  const t = el('div', 'toast-msg', text);
+  container.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function buildAvatarEl(name, clientId, cls) {
+  const av = el('div', 'avatar' + (cls ? ' ' + cls : ''));
+  const info = avatarInfo(clientId);
+  if (info && (info.type === 'upload' || info.type === 'link') && info.value) {
+    const img = document.createElement('img');
+    img.src = info.value;
+    img.alt = name;
+    img.className = 'avatar-img';
+    img.addEventListener('error', () => {
+      img.remove();
+      av.style.background = avatarColorFor(name, info);
+      av.textContent = (name[0] || '?').toUpperCase();
+    });
+    av.appendChild(img);
+  } else {
+    av.style.background = avatarColorFor(name, info);
+    av.textContent = (name[0] || '?').toUpperCase();
+  }
+  av.title = name;
+  return av;
+}
+
+function openAvatarPreview(name, clientId) {
+  const info = avatarInfo(clientId);
+  if (info && (info.type === 'upload' || info.type === 'link') && info.value) {
+    const big = document.createElement('img');
+    big.src = info.value;
+    big.alt = name;
+    big.className = 'avatar-preview-big';
+    openOverlay(big, true);
+  } else {
+    const big = el('div', 'avatar-preview-big-initials', (name[0] || '?').toUpperCase());
+    big.style.background = avatarColorFor(name, info);
+    openOverlay(big, true);
+  }
+}
+
+function resizeImageFile(file, size, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const src = Math.min(img.width, img.height);
+        const sx = (img.width - src) / 2;
+        const sy = (img.height - src) / 2;
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, sx, sy, src, src, 0, 0, size, size);
+        
+        const imageData = ctx.getImageData(0, 0, size, size).data;
+        let r = 0, g = 0, b = 0, count = 0;
+        for (let i = 0; i < imageData.length; i += 4) {
+          if (imageData[i + 3] > 128) {
+            r += imageData[i]; g += imageData[i + 1]; b += imageData[i + 2]; count++;
+          }
+        }
+        let finalColor = null;
+        if (count > 0) {
+          r = Math.round(r / count); g = Math.round(g / count); b = Math.round(b / count);
+          const hex = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+          finalColor = getClosestColor(hex);
+        }
+        
+        resolve({ dataUrl: canvas.toDataURL('image/jpeg', quality), color: finalColor });
+      };
+      img.onerror = () => reject(new Error('bad image'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function showError(text) {
+  errorBar.textContent = text;
+  errorBar.hidden = false;
+  clearTimeout(errorTimer);
+  errorTimer = setTimeout(() => { errorBar.hidden = true; }, 4000);
+}
+
+function showGateError(text) {
+  let p = document.getElementById('gateError');
+  if (!p) {
+    p = document.createElement('p');
+    p.id = 'gateError';
+    p.style.color = '#ffb4b4';
+    p.style.fontSize = '0.82rem';
+    p.style.fontWeight = '600';
+    p.style.margin = '14px 0 0';
+    const card = nameGate.querySelector('.gate-card');
+    (card || nameGate).appendChild(p);
+  }
+  p.textContent = text;
+  p.hidden = false;
+}
+function hideGateError() {
+  const p = document.getElementById('gateError');
+  if (p) p.hidden = true;
+}
+
+function showNameGate() {
+  nameGate.hidden = false;
+  chatApp.hidden = true;
+  blockScreen.hidden = true;
+  document.body.classList.remove('in-chat');
+  try { nameInput.focus(); } catch (e) { }
+}
+
+// ---------- scroll handling ----------
+function checkScrollPos() {
+  const isNearBottom = messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 200;
+  if (isNearBottom) {
+    unreadCount = 0;
+    scrollToBottomBtn.classList.remove('visible');
+  } else {
+    scrollToBottomBtn.classList.add('visible');
+    scrollToBottomBtn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>${unreadCount > 0 ? unreadCount + ' new message' + (unreadCount > 1 ? 's' : '') : 'Scroll to bottom'}</span>
+    `;
+  }
+}
+
+messagesEl.addEventListener('scroll', checkScrollPos);
+
+scrollToBottomBtn.addEventListener('click', () => {
+  scrollToBottom(true);
+  checkScrollPos();
+});
+
+// ---------- time ----------
+function clock(ts) {
+  return new Date(ts).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+}
+function fullStamp(ts) {
+  return new Date(ts).toLocaleString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
+}
+function startOfDay(d) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+}
+function dividerLabel(ts) {
+  const d = new Date(ts);
+  const now = new Date();
+  const dayDiff = Math.round((startOfDay(now) - startOfDay(d)) / 86400000);
+  if (dayDiff <= 0) return 'Today ' + clock(ts);
+  if (dayDiff === 1) return 'Yesterday ' + clock(ts);
+  if (dayDiff < 7) return d.toLocaleDateString([], { weekday: 'long' }) + ' ' + clock(ts);
+  const opts = d.getFullYear() === now.getFullYear()
+    ? { month: 'short', day: 'numeric' }
+    : { month: 'short', day: 'numeric', year: 'numeric' };
+  return d.toLocaleDateString([], opts) + ' at ' + clock(ts);
+}
+function maybeInsertDivider(ts) {
+  const newDay = !lastRender || startOfDay(new Date(ts)) !== startOfDay(new Date(lastRender.ts));
+  const bigGap = !lastRender || (ts - lastRender.ts > DIVIDER_GAP);
+  if (!newDay && !bigGap) return false;
+  messagesEl.appendChild(el('div', 'divider', dividerLabel(ts)));
+  return true;
+}
+
+// ---------- people, mentions, whispers ----------
+function usersList() {
+  const list = [];
+  onlineUsers.forEach((u, id) => list.push({ id, name: u.name }));
+  return list.sort((a, b) => b.name.length - a.name.length);
+}
+
+function matchUserAt(str) {
+  const l = lc(str);
+  const users = usersList();
+  for (let i = 0; i < users.length; i++) {
+    const n = lc(users[i].name);
+    if (!n || l.indexOf(n) !== 0) continue;
+    if (l.length === n.length || /[\s.,!?;:)]/.test(l[n.length])) return users[i];
+  }
+  return null;
+}
+
+function findMentions(text) {
+  const out = [];
+  const re = /(^|\s)@/g;
+  let m;
+  while ((m = re.exec(text))) {
+    const rest = text.slice(m.index + m[0].length);
+    const u = matchUserAt(rest);
+    if (u && out.indexOf(u.name) === -1) out.push(u.name);
+  }
+  return out;
+}
+
+function currentWhisper() {
+  const v = messageInput.value;
+  if (v[0] === '*') {
+    const u = matchUserAt(v.slice(1));
+    if (u && u.id !== myClientId) return { toId: u.id, toName: u.name };
+  }
+  return replyTarget && replyTarget.whisper ? replyTarget.whisper : null;
+}
+
+function canSee(msg) {
+  if (!msg.whisper) return true;
+  if (msg.clientId === myClientId) return true;
+  if (msg.whisper.toId) return msg.whisper.toId === myClientId;
+  return lc(msg.whisper.toName) === lc(myName);
+}
+
+function snippetOf(msg) {
+  if (msg.file) {
+    const base = 'Attachment: ' + msg.file.name;
+    const t = (msg.text || '').replace(/\s+/g, ' ').trim();
+    return t ? base + ' — ' + (t.length > 60 ? t.slice(0, 60) + '…' : t) : base;
+  }
+  const t = (msg.text || '').replace(/\s+/g, ' ').trim();
+  return t.length > 90 ? t.slice(0, 90) + '…' : t;
+}
+
+// ---------- emoji ----------
+const EMOJI_RE = /\p{Extended_Pictographic}(\u200D\p{Extended_Pictographic}|\uFE0F|[\u{1F3FB}-\u{1F3FF}])*|[\u{1F1E6}-\u{1F1FF}]{2}/gu;
+
+function bigEmojiCount(text) {
+  const stripped = text.replace(/\s+/g, '');
+  if (!stripped) return 0;
+  const matches = stripped.match(EMOJI_RE);
+  if (!matches) return 0;
+  if (matches.join('').length !== stripped.length) return 0;
+  return matches.length <= 3 ? matches.length : 0;
+}
+
+// ---------- overlays ----------
+function overlayKey(e) {
+  if (e.key === 'Escape') closeOverlay();
+}
+function closeOverlay() {
+  const o = $('overlay');
+  if (o) o.remove();
+  document.removeEventListener('keydown', overlayKey);
+}
+function openOverlay(content, closeOnContentClick) {
+  closeOverlay();
+  const overlay = el('div', 'lightbox');
+  overlay.id = 'overlay';
+  overlay.appendChild(content);
+  overlay.addEventListener('click', (e) => {
+    if (closeOnContentClick || e.target === overlay) closeOverlay();
+  });
+  document.body.appendChild(overlay);
+  document.addEventListener('keydown', overlayKey);
+}
+
+function decodeText(dataUrl) {
+  try {
+    const bin = atob(dataUrl.slice(dataUrl.indexOf(',') + 1));
+    const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+    const text = new TextDecoder('utf-8').decode(bytes);
+    return text.indexOf('\u0000') === -1 ? text : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+const RTF_IGNORE_DESTINATIONS = new Set([
+  'fonttbl', 'colortbl', 'stylesheet', 'listtable', 'listoverridetable',
+  'revtbl', 'info', 'generator', 'xmlnstbl', 'latentstyles', 'themedata',
+  'colorschememapping', 'datastore', 'object', 'objdata', 'pict',
+  'nonshppict', 'shprslt', 'filetbl', 'template', 'rsidtbl',
+]);
+function rtfToText(rtf) {
+  let out = '';
+  let i = 0;
+  const n = rtf.length;
+  let depth = 0;
+  const skipDepths = [];
+  let uSkip = 0;
+  let ucCount = 1;
+  const atSkip = () => skipDepths.length > 0 && depth >= skipDepths[skipDepths.length - 1];
+
+  while (i < n) {
+    const ch = rtf[i];
+    if (ch === '{') { depth++; i++; continue; }
+    if (ch === '}') {
+      if (skipDepths.length && depth === skipDepths[skipDepths.length - 1]) skipDepths.pop();
+      depth = Math.max(0, depth - 1);
+      i++;
+      continue;
+    }
+    if (ch === '\\') {
+      i++;
+      if (i >= n) break;
+      const c2 = rtf[i];
+      if (c2 === '\\' || c2 === '{' || c2 === '}') {
+        if (uSkip > 0) uSkip--;
+        else if (!atSkip()) out += c2;
+        i++;
+        continue;
+      }
+      if (c2 === "'") {
+        const hex = rtf.substr(i + 1, 2);
+        i += 3;
+        if (uSkip > 0) uSkip--;
+        else if (!atSkip()) {
+          const code = parseInt(hex, 16);
+          if (!isNaN(code)) out += String.fromCharCode(code);
+        }
+        continue;
+      }
+      const m = /^([a-zA-Z]+)(-?\d+)?( )?/.exec(rtf.slice(i));
+      if (m) {
+        const word = m[1];
+        const param = m[2] !== undefined ? parseInt(m[2], 10) : null;
+        i += m[0].length;
+        if (word === 'par' || word === 'line') { if (!atSkip()) out += '\n'; }
+        else if (word === 'tab') { if (!atSkip()) out += '\t'; }
+        else if (word === 'uc') { if (param !== null) ucCount = param; }
+        else if (word === 'u') {
+          if (!atSkip() && param !== null) out += String.fromCharCode(param < 0 ? param + 65536 : param);
+          uSkip = ucCount;
+        } else if (word === '*' || RTF_IGNORE_DESTINATIONS.has(word)) {
+          skipDepths.push(depth);
+        }
+        continue;
+      }
+      i++;
+      continue;
+    }
+    if (uSkip > 0) uSkip--;
+    else if (!atSkip()) out += ch;
+    i++;
+  }
+  return out.replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function getPreviewText(file) {
+  const raw = decodeText(file.data);
+  if (raw == null) return null;
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  if (ext === 'rtf' || /^\s*\{\\rtf/.test(raw)) return rtfToText(raw);
+  return raw;
+}
+
+function openTextViewer(file, text) {
+  const panel = el('div', 'text-viewer');
+  const head = el('div', 'text-viewer-head');
+  head.appendChild(el('span', 'text-viewer-name', file.name));
+  head.appendChild(buildDownloadLink(file));
+  panel.appendChild(head);
+  panel.appendChild(el('pre', null, text));
+  openOverlay(panel, false);
+}
+
+// ---------- audio player ----------
+function buildAudioPlayer(file) {
+  const wrap = el('div', 'audio-player');
+
+  const playBtn = el('button', 'audio-play-btn');
+  playBtn.type = 'button';
+  playBtn.innerHTML = PLAY_ICON_SVG;
+
+  const track = el('div', 'audio-track');
+  const trackFill = el('div', 'audio-track-fill');
+  track.appendChild(trackFill);
+
+  const timeEl = el('div', 'audio-time', '0:00');
+
+  wrap.appendChild(playBtn);
+  wrap.appendChild(track);
+  wrap.appendChild(timeEl);
+
+  const audio = new Audio(file.data);
+  audio.preload = 'metadata';
+  let duration = 0;
+
+  function formatTime(sec) {
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, '0');
+    return m + ':' + s;
+  }
+
+  function onDurationKnown(d) {
+    duration = d;
+    timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(duration);
+  }
+
+  audio.addEventListener('loadedmetadata', () => {
+    if (isFinite(audio.duration) && audio.duration > 0) {
+      onDurationKnown(audio.duration);
+    } else {
+      audio.currentTime = 1e101;
+      audio.ontimeupdate = () => {
+        audio.ontimeupdate = null;
+        audio.currentTime = 0;
+        onDurationKnown(audio.duration);
+      };
+    }
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (duration > 0) trackFill.style.width = (audio.currentTime / duration * 100) + '%';
+    timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(duration);
+  });
+
+  audio.addEventListener('play', () => {
+    if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) currentlyPlayingAudio.pause();
+    currentlyPlayingAudio = audio;
+    playBtn.innerHTML = PAUSE_ICON_SVG;
+  });
+  audio.addEventListener('pause', () => {
+    if (currentlyPlayingAudio === audio) currentlyPlayingAudio = null;
+    playBtn.innerHTML = PLAY_ICON_SVG;
+  });
+  audio.addEventListener('ended', () => {
+    trackFill.style.width = '0%';
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play();
+    else audio.pause();
+  });
+
+  track.addEventListener('click', (e) => {
+    if (!duration) return;
+    const rect = track.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    audio.currentTime = ratio * duration;
+  });
+
+  return wrap;
+}
+
+// ---------- file content ----------
+function getFileCategory(file) {
+  const mime = file.type || '';
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  if (mime.indexOf('image/') === 0 || IMAGE_EXTS.indexOf(ext) !== -1) return 'image';
+  if (mime.indexOf('audio/') === 0 || AUDIO_EXTS.indexOf(ext) !== -1) return 'audio';
+  if (mime.indexOf('font/') === 0 || FONT_EXTS.indexOf(ext) !== -1) return 'font';
+  if (MUSIC_EXTS.indexOf(ext) !== -1) return 'music';
+  if (mime.indexOf('text/') === 0 || TEXT_EXTS.indexOf(ext) !== -1 || /json|xml|javascript/.test(mime)) return 'text';
+  if (mime.indexOf('video/') === 0 || VIDEO_EXTS.indexOf(ext) !== -1) return 'video';
+  return 'other';
+}
+
+function dataUrlToBlob(dataUrl) {
+  const comma = dataUrl.indexOf(',');
+  const head = dataUrl.slice(0, comma);
+  const body = dataUrl.slice(comma + 1);
+  const mimeMatch = /^data:([^;,]*)/.exec(head);
+  const mime = (mimeMatch && mimeMatch[1]) || 'application/octet-stream';
+  let bytes;
+  if (/;base64/i.test(head)) {
+    const bin = atob(body);
+    bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  } else {
+    bytes = new TextEncoder().encode(decodeURIComponent(body));
+  }
+  return new Blob([bytes], { type: mime });
+}
+
+function isFramed() {
+  try { return window.self !== window.top; } catch (e) { return true; }
+}
+
+function downloadFile(file) {
+  if (!file || !isDataUrl(file.data)) {
+    showError('This file is no longer available.');
+    return;
+  }
+  let url;
+  try {
+    url = URL.createObjectURL(dataUrlToBlob(file.data));
+  } catch (e) {
+    showError('Couldn\'t prepare that file for download.');
+    return;
+  }
+  const revoke = () => setTimeout(() => URL.revokeObjectURL(url), 60000);
+
+  if (isFramed()) {
+    const win = window.open('', '_blank');
+    if (win) {
+      try {
+        const doc = win.document;
+        doc.title = file.name;
+        const link = doc.createElement('a');
+        link.href = url;
+        link.download = file.name;
+        (doc.body || doc.documentElement).appendChild(link);
+        link.click();
+        link.remove();
+        revoke();
+        setTimeout(() => { try { win.close(); } catch (e) { } }, 2500);
+        return;
+      } catch (e) { }
+    }
+  }
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = file.name;
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  revoke();
+}
+
+function buildDownloadLink(file) {
+  const a = el('a', 'file-download');
+  a.href = '#';
+  a.title = 'Download';
+  a.setAttribute('role', 'button');
+  a.setAttribute('aria-label', 'Download ' + (file && file.name ? file.name : 'file'));
+  a.innerHTML = DOWNLOAD_ICON_SVG;
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    downloadFile(file);
+  });
+  return a;
+}
+
+function buildFileInfo(file, extra) {
+  const info = el('div', 'file-info');
+  const nameEl = el('div', 'file-name', file.name);
+  nameEl.title = file.name;
+  info.appendChild(nameEl);
+  info.appendChild(el('div', 'file-size', formatBytes(file.size || 0) + (extra || '')));
+  return info;
+}
+
+function buildFileFooter(file) {
+  const row = el('div', 'file-footer');
+  row.appendChild(buildFileInfo(file));
+  row.appendChild(buildDownloadLink(file));
+  return row;
+}
+
+function buildGenericFile(file, expired) {
+  const wrap = el('div', 'file-generic');
+  const icon = el('div', 'file-icon');
+  icon.innerHTML = FILE_ICON_SVG;
+  wrap.appendChild(icon);
+  wrap.appendChild(buildFileInfo(file, expired ? ' · no longer available' : ''));
+  if (!expired) wrap.appendChild(buildDownloadLink(file));
+  return wrap;
+}
+
+function buildTextPreview(file) {
+  const text = getPreviewText(file);
+  if (text == null) return null;
+  const box = el('div', 'text-preview');
+  box.title = 'Click to open';
+  box.appendChild(el('pre', null, text.slice(0, 600)));
+  box.addEventListener('click', () => openTextViewer(file, text));
+  return box;
+}
+
+// ---------- font glyph-coverage parsing ----------
+function ftReadTag(dv, off) {
+  return String.fromCharCode(dv.getUint8(off), dv.getUint8(off + 1), dv.getUint8(off + 2), dv.getUint8(off + 3));
+}
+function ftGetTables(dv) {
+  let base = 0;
+  if (dv.byteLength > 16 && ftReadTag(dv, 0) === 'ttcf') base = dv.getUint32(12);
+  const numTables = dv.getUint16(base + 4);
+  const tables = {};
+  for (let i = 0; i < numTables; i++) {
+    const rec = base + 12 + i * 16;
+    if (rec + 16 > dv.byteLength) break;
+    const tag = ftReadTag(dv, rec);
+    tables[tag] = { offset: dv.getUint32(rec + 8), length: dv.getUint32(rec + 12) };
+  }
+  return tables;
+}
+function ftParseSubtable(dv, off, out) {
+  const format = dv.getUint16(off);
+  if (format === 0) {
+    for (let i = 0; i < 256; i++) {
+      if (off + 6 + i >= dv.byteLength) break;
+      if (dv.getUint8(off + 6 + i) !== 0) out.add(i);
+    }
+    return;
+  }
+  if (format === 4) {
+    const segCountX2 = dv.getUint16(off + 6);
+    const segCount = segCountX2 / 2;
+    const endBase = off + 14;
+    const startBase = endBase + segCountX2 + 2;
+    const deltaBase = startBase + segCountX2;
+    const rangeBase = deltaBase + segCountX2;
+    if (rangeBase + segCountX2 > dv.byteLength) return;
+    for (let s = 0; s < segCount; s++) {
+      const end = dv.getUint16(endBase + s * 2);
+      const start = dv.getUint16(startBase + s * 2);
+      const delta = dv.getInt16(deltaBase + s * 2);
+      const rangeOffset = dv.getUint16(rangeBase + s * 2);
+      if (start > end) continue;
+      for (let c = start; c <= end; c++) {
+        if (c === 0xffff) continue;
+        let gid;
+        if (rangeOffset === 0) {
+          gid = (c + delta) & 0xffff;
+        } else {
+          const addr = rangeBase + s * 2 + rangeOffset + (c - start) * 2;
+          if (addr + 1 >= dv.byteLength) continue;
+          gid = dv.getUint16(addr);
+          if (gid !== 0) gid = (gid + delta) & 0xffff;
+        }
+        if (gid !== 0) out.add(c);
+      }
+    }
+    return;
+  }
+  if (format === 6) {
+    const first = dv.getUint16(off + 6);
+    const count = dv.getUint16(off + 8);
+    for (let i = 0; i < count; i++) {
+      const p = off + 10 + i * 2;
+      if (p + 1 >= dv.byteLength) break;
+      if (dv.getUint16(p) !== 0) out.add(first + i);
+    }
+    return;
+  }
+  if (format === 12 || format === 13) {
+    const nGroups = dv.getUint32(off + 12);
+    for (let g = 0; g < nGroups; g++) {
+      const rec = off + 16 + g * 12;
+      if (rec + 12 > dv.byteLength) break;
+      const start = dv.getUint32(rec);
+      const end = dv.getUint32(rec + 4);
+      const gid0 = dv.getUint32(rec + 8);
+      if (end < start) continue;
+      const span = Math.min(end - start, 0x11000);
+      for (let i = 0; i <= span; i++) {
+        const cp = start + i;
+        if (cp > 0x10ffff) break;
+        if (format === 13) { if (gid0 !== 0) out.add(cp); }
+        else if (gid0 + i !== 0) out.add(cp);
+      }
+    }
+  }
+}
+function ftParseCmap(dv, table) {
+  const off = table.offset;
+  const numSubtables = dv.getUint16(off + 2);
+  const out = new Set();
+  for (let i = 0; i < numSubtables; i++) {
+    const rec = off + 4 + i * 8;
+    if (rec + 8 > dv.byteLength) break;
+    const platformID = dv.getUint16(rec);
+    const encodingID = dv.getUint16(rec + 2);
+    const subOff = dv.getUint32(rec + 4);
+    if (subOff === 0 || subOff >= table.length) continue;
+    if (platformID === 1 && encodingID === 0) continue;
+    const sub = off + subOff;
+    if (sub + 2 > dv.byteLength) continue;
+    try { ftParseSubtable(dv, sub, out); } catch (e) { }
+  }
+  return out;
+}
+function ftParseNameTable(dv, table) {
+  const off = table.offset;
+  const end = off + table.length;
+  const count = dv.getUint16(off + 2);
+  const stringOffset = dv.getUint16(off + 4);
+  const result = {};
+  for (let i = 0; i < count; i++) {
+    const rec = off + 6 + i * 12;
+    if (rec + 12 > end) break;
+    const platformID = dv.getUint16(rec);
+    const languageID = dv.getUint16(rec + 4);
+    const nameID = dv.getUint16(rec + 6);
+    const len = dv.getUint16(rec + 8);
+    const strOff = dv.getUint16(rec + 10);
+    const start = off + stringOffset + strOff;
+    if (start + len > end || start + len > dv.byteLength) continue;
+    let str = '';
+    if (platformID === 3 || platformID === 0) {
+      for (let j = 0; j + 1 < len; j += 2) str += String.fromCharCode(dv.getUint16(start + j));
+    } else {
+      for (let j = 0; j < len; j++) str += String.fromCharCode(dv.getUint8(start + j));
+    }
+    str = str.replace(/\0/g, '').trim();
+    if (!str) continue;
+    const score = (platformID === 3 && languageID === 0x409) ? 4 : (platformID === 3) ? 3 : (platformID === 0) ? 2 : 1;
+    if (!result[nameID] || score > result[nameID].score) result[nameID] = { str: str, score: score };
+  }
+  return result;
+}
+function ftParseFont(buffer) {
+  const dv = new DataView(buffer);
+  const tables = ftGetTables(dv);
+  const meta = {};
+  let codepoints = null;
+  if (tables.cmap) {
+    try {
+      const set = ftParseCmap(dv, tables.cmap);
+      if (set.size) codepoints = set;
+    } catch (e) { }
+  }
+  if (tables.name) {
+    try {
+      const names = ftParseNameTable(dv, tables.name);
+      if (names[1]) meta.family = names[1].str;
+      if (names[2]) meta.subfamily = names[2].str;
+      if (names[4]) meta.fullName = names[4].str;
+      if (names[5]) meta.version = names[5].str;
+    } catch (e) { }
+  }
+  if (tables.head && tables.head.offset + 20 <= dv.byteLength) meta.unitsPerEm = dv.getUint16(tables.head.offset + 18);
+  if (tables.maxp && tables.maxp.offset + 6 <= dv.byteLength) meta.numGlyphs = dv.getUint16(tables.maxp.offset + 4);
+  meta.isCFF = !!tables['CFF '];
+  meta.isTrueType = !!tables.glyf;
+  return { codepoints: codepoints, meta: meta };
+}
+function ftIsCombining(cp) {
+  return (cp >= 0x0300 && cp <= 0x036f) || (cp >= 0x0483 && cp <= 0x0489) ||
+    (cp >= 0x0591 && cp <= 0x05bd) || (cp >= 0x0610 && cp <= 0x061a) ||
+    (cp >= 0x064b && cp <= 0x065f) || (cp >= 0x06d6 && cp <= 0x06dc) ||
+    (cp >= 0x0900 && cp <= 0x0903) || (cp >= 0x1ab0 && cp <= 0x1aff) ||
+    (cp >= 0x1dc0 && cp <= 0x1dff) || (cp >= 0x20d0 && cp <= 0x20ff) ||
+    (cp >= 0xfe20 && cp <= 0xfe2f);
+}
+function ftIsExcluded(cp) {
+  if (cp < 0x20) return true;
+  if (cp >= 0x7f && cp <= 0x9f) return true;
+  if (cp >= 0xd800 && cp <= 0xdfff) return true;
+  if (cp >= 0xfe00 && cp <= 0xfe0f) return true;
+  if (cp >= 0xe0100 && cp <= 0xe01ef) return true;
+  if (cp === 0xfeff || (cp >= 0x200b && cp <= 0x200f)) return true;
+  if (cp >= 0xfff9 && cp <= 0xfffb) return true;
+  if ((cp & 0xfffe) === 0xfffe) return true;
+  if (cp >= 0xfdd0 && cp <= 0xfdef) return true;
+  return false;
+}
+function ftHex(cp) { return 'U+' + cp.toString(16).toUpperCase().padStart(4, '0'); }
+
+// ---------- font preview ----------
+function loadCustomFont(file, familyName) {
+  if (!window.FontFace) return Promise.resolve(false);
+  try {
+    const face = new FontFace(familyName, 'url(' + file.data + ')');
+    return face.load().then((loaded) => {
+      document.fonts.add(loaded);
+      return true;
+    }).catch(() => false);
+  } catch (e) {
+    return Promise.resolve(false);
+  }
+}
+
+function openFontViewer(file, fam, loadPromise) {
+  const panel = el('div', 'text-viewer font-viewer');
+  const head = el('div', 'text-viewer-head');
+  head.appendChild(el('span', 'text-viewer-name', file.name));
+  head.appendChild(buildDownloadLink(file));
+  panel.appendChild(head);
+
+  const body = el('div', 'font-viewer-body');
+  const loading = el('p', 'glyph-loading', 'Loading font\u2026');
+  body.appendChild(loading);
+  panel.appendChild(body);
+
+  const toastEl = el('div', 'glyph-toast');
+  panel.appendChild(toastEl);
+
+  openOverlay(panel, false);
+
+  let toastTimer = null;
+  function copyGlyph(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) { }
+      ta.remove();
+    }
+    toastEl.textContent = (text === ' ' ? 'space' : text) + ' copied';
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1200);
+  }
+
+  function buildCell(item) {
+    const cell = el('button', 'glyph-cell');
+    cell.type = 'button';
+    const gl = el('span', 'glyph-gl');
+    let copyValue, label;
+    if (item.type === 'char') {
+      const ch = String.fromCodePoint(item.cp);
+      gl.textContent = ftIsCombining(item.cp) ? '\u25cc' + ch : ch;
+      copyValue = ch;
+      label = ftHex(item.cp);
+      cell.dataset.search = (ch + ' ' + label).toLowerCase();
+    } else {
+      gl.textContent = item.text;
+      gl.classList.add('seq');
+      copyValue = item.text;
+      label = 'sequence';
+      cell.dataset.search = item.text.toLowerCase();
+    }
+    cell.appendChild(gl);
+    cell.appendChild(el('span', 'glyph-cp', label));
+    cell.title = 'Click to copy ' + (copyValue === ' ' ? 'space' : copyValue);
+    cell.addEventListener('click', () => copyGlyph(copyValue));
+    return cell;
+  }
+
+  function buildSection(title, items, chunked) {
+    const sec = document.createElement('section');
+    sec.className = 'glyph-section';
+    const h = document.createElement('h3');
+    h.appendChild(document.createTextNode(title + ' '));
+    h.appendChild(el('span', 'glyph-count', String(items.length)));
+    sec.appendChild(h);
+    const grid = el('div', 'glyph-grid');
+    const limit = chunked ? 1200 : items.length;
+    for (let i = 0; i < Math.min(limit, items.length); i++) grid.appendChild(buildCell(items[i]));
+    sec.appendChild(grid);
+    if (items.length > limit) {
+      let shown = limit;
+      const more = el('button', 'btn btn-soft glyph-more', 'Show ' + (items.length - shown) + ' more');
+      more.type = 'button';
+      more.addEventListener('click', () => {
+        const next = items.slice(shown, shown + 2000);
+        const frag = document.createDocumentFragment();
+        next.forEach((it) => frag.appendChild(buildCell(it)));
+        grid.appendChild(frag);
+        shown += next.length;
+        if (shown >= items.length) more.remove();
+        else more.textContent = 'Show ' + (items.length - shown) + ' more';
+        applyGlyphFilter();
+      });
+      sec.appendChild(more);
+    }
+    return sec;
+  }
+
+  const sectionsEl = el('div', 'glyph-sections');
+  let searchQuery = '';
+  function applyGlyphFilter() {
+    const q = searchQuery.trim().toLowerCase();
+    sectionsEl.querySelectorAll('.glyph-section').forEach((sec) => {
+      let visible = 0;
+      sec.querySelectorAll('.glyph-cell').forEach((cell) => {
+        const match = !q || (cell.dataset.search || '').indexOf(q) !== -1;
+        cell.hidden = !match;
+        if (match) visible++;
+      });
+      sec.hidden = visible === 0;
+      const cnt = sec.querySelector('.glyph-count');
+      if (cnt) cnt.textContent = String(q ? visible : sec.querySelectorAll('.glyph-cell').length);
+    });
+  }
+
+  function renderChart(codepoints) {
+    sectionsEl.innerHTML = '';
+    const used = new Set();
+    const frag = document.createDocumentFragment();
+    GLYPH_SECTIONS.forEach((sec) => {
+      const items = [];
+      if (sec.chars) {
+        for (const ch of sec.chars) {
+          const cp = ch.codePointAt(0);
+          if (used.has(cp)) continue;
+          used.add(cp);
+          if (codepoints && !codepoints.has(cp)) continue;
+          items.push({ type: 'char', cp: cp });
+        }
+      }
+      if (sec.seqs) sec.seqs.forEach((s) => items.push({ type: 'seq', text: s }));
+      if (items.length) frag.appendChild(buildSection(sec.name, items, false));
+    });
+    if (codepoints) {
+      const rest = [];
+      codepoints.forEach((cp) => { if (!used.has(cp) && !ftIsExcluded(cp)) rest.push(cp); });
+      rest.sort((a, b) => a - b);
+      if (rest.length) frag.appendChild(buildSection('Everything else in this font', rest.map((cp) => ({ type: 'char', cp: cp })), true));
+    }
+    sectionsEl.appendChild(frag);
+    applyGlyphFilter();
+  }
+
+  (async () => {
+    let buffer;
+    try {
+      buffer = dataUrlToArrayBuffer(file.data);
+    } catch (e) {
+      loading.textContent = 'Couldn\u2019t read this font file.';
+      return;
+    }
+
+    let codepoints = null;
+    let meta = {};
+    try {
+      const parsed = ftParseFont(buffer);
+      codepoints = parsed.codepoints;
+      meta = parsed.meta;
+    } catch (e) { }
+
+    const ok = await loadPromise;
+    panel.style.setProperty('--gff', ok ? '"' + fam + '"' : 'inherit');
+    panel.style.setProperty('--glyph-size', '28px');
+    loading.remove();
+
+    const toolbar = el('div', 'glyph-toolbar');
+    const sizeTool = el('label', 'glyph-tool');
+    sizeTool.appendChild(document.createTextNode('Size'));
+    const sizeRange = document.createElement('input');
+    sizeRange.type = 'range';
+    sizeRange.min = '16';
+    sizeRange.max = '72';
+    sizeRange.value = '28';
+    sizeRange.addEventListener('input', () => panel.style.setProperty('--glyph-size', sizeRange.value + 'px'));
+    sizeTool.appendChild(sizeRange);
+    toolbar.appendChild(sizeTool);
+    toolbar.appendChild(el('div', 'glyph-sep'));
+
+    const ligLabel = el('label', 'glyph-tool glyph-switch-inline');
+    const ligInput = document.createElement('input');
+    ligInput.type = 'checkbox';
+    ligInput.checked = true;
+    ligInput.addEventListener('change', () => panel.classList.toggle('noliga', !ligInput.checked));
+    ligLabel.appendChild(ligInput);
+    ligLabel.appendChild(document.createTextNode('Ligatures'));
+    toolbar.appendChild(ligLabel);
+    toolbar.appendChild(el('div', 'glyph-sep'));
+
+    const searchTool = el('div', 'glyph-tool');
+    const searchInput = document.createElement('input');
+    searchInput.type = 'search';
+    searchInput.placeholder = 'Filter  A  /  U+00F1 \u2026';
+    searchInput.addEventListener('input', () => { searchQuery = searchInput.value; applyGlyphFilter(); });
+    searchTool.appendChild(searchInput);
+    toolbar.appendChild(searchTool);
+    body.appendChild(toolbar);
+
+    const info = el('div', 'glyph-info');
+    const family = meta.fullName || [meta.family, meta.subfamily].filter(Boolean).join(' ') || file.name;
+    info.appendChild(el('span', 'glyph-chip accent', family));
+    if (meta.version) info.appendChild(el('span', 'glyph-chip', meta.version.replace(/^Version\s*/i, 'v')));
+    if (meta.numGlyphs) {
+      const c = el('span', 'glyph-chip');
+      c.appendChild(el('strong', null, String(meta.numGlyphs)));
+      c.appendChild(document.createTextNode(' glyphs'));
+      info.appendChild(c);
+    }
+    if (codepoints) {
+      const c = el('span', 'glyph-chip');
+      c.appendChild(el('strong', null, String(codepoints.size)));
+      c.appendChild(document.createTextNode(' mapped chars'));
+      info.appendChild(c);
+    } else {
+      info.appendChild(el('span', 'glyph-chip', 'coverage unknown \u2014 showing common set'));
+    }
+    if (meta.unitsPerEm) info.appendChild(el('span', 'glyph-chip', meta.unitsPerEm + ' upem'));
+    if (meta.isCFF) info.appendChild(el('span', 'glyph-chip', 'CFF outlines'));
+    else if (meta.isTrueType) info.appendChild(el('span', 'glyph-chip', 'TrueType outlines'));
+    body.appendChild(info);
+
+    const tt = el('div', 'glyph-typetest');
+    tt.appendChild(el('label', null, 'Type test'));
+    const ta = document.createElement('textarea');
+    ta.rows = 2;
+    ta.spellcheck = false;
+    ta.value = 'The quick brown fox jumps over the lazy dog \u2014 0123456789';
+    tt.appendChild(ta);
+    body.appendChild(tt);
+
+    body.appendChild(sectionsEl);
+    renderChart(codepoints);
+  })();
+}
+
+function buildFontContent(file) {
+  const fam = 'tc-font-' + Math.random().toString(36).slice(2, 10);
+  const loadPromise = loadCustomFont(file, fam);
+
+  const box = el('div', 'font-preview');
+  box.title = 'Click to open';
+  const sample = el('span', 'font-sample', 'Aag');
+  box.appendChild(sample);
+  loadPromise.then((ok) => { if (ok) sample.style.fontFamily = '"' + fam + '"'; });
+  box.addEventListener('click', () => openFontViewer(file, fam, loadPromise));
+  return box;
+}
+
+function buildFileContent(file) {
+  if (!isDataUrl(file.data) || file.expired) return buildGenericFile(file, true);
+  if (!showPreviews) return buildGenericFile(file, false);
+
+  const stack = el('div', 'file-stack');
+  if (file.category === 'image') {
+    const img = el('img', 'file-image');
+    img.src = file.data;
+    img.alt = file.name;
+    img.loading = 'lazy';
+    img.addEventListener('click', () => {
+      const big = document.createElement('img');
+      big.src = file.data;
+      big.alt = file.name;
+      openOverlay(big, true);
+    });
+    stack.appendChild(img);
+  } else if (file.category === 'audio') {
+    stack.appendChild(buildAudioPlayer(file));
+  } else if (file.category === 'font') {
+    stack.appendChild(buildFontContent(file));
+  } else if (file.category === 'music') {
+    if (file.size > 125 * 1024) {
+      return buildGenericFile(file, false);
+    }
+    stack.appendChild(buildMusicPreview(file));
+  } else if (file.category === 'text') {
+    const preview = buildTextPreview(file);
+    if (!preview) return buildGenericFile(file, false);
+    stack.appendChild(preview);
+  } else {
+    return buildGenericFile(file, false);
+  }
+  stack.appendChild(buildFileFooter(file));
+  return stack;
+}
+
+// ---------- sheet music preview ----------
+const OSMD_CDN_URLS = [
+  'https://cdn.jsdelivr.net/npm/opensheetmusicdisplay@1.7.4/build/opensheetmusicdisplay.min.js',
+  'https://unpkg.com/opensheetmusicdisplay@1.7.4/build/opensheetmusicdisplay.min.js',
+];
+let osmdEnginePromise = null;
+function ensureOsmdEngine() {
+  if (window.opensheetmusicdisplay && window.opensheetmusicdisplay.OpenSheetMusicDisplay) return Promise.resolve(true);
+  if (osmdEnginePromise) return osmdEnginePromise;
+  osmdEnginePromise = (async () => {
+    for (const url of OSMD_CDN_URLS) {
+      try {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = url;
+          s.async = false;
+          s.onload = resolve;
+          s.onerror = () => reject(new Error('load failed'));
+          document.head.appendChild(s);
+        });
+        if (window.opensheetmusicdisplay && window.opensheetmusicdisplay.OpenSheetMusicDisplay) return true;
+      } catch (e) { }
+    }
+    return false;
+  })();
+  return osmdEnginePromise;
+}
+
+function dataUrlToArrayBuffer(dataUrl) {
+  const bin = atob(dataUrl.slice(dataUrl.indexOf(',') + 1));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes.buffer;
+}
+
+async function unzipMXL(buffer) {
+  const view = new DataView(buffer);
+  let offset = buffer.byteLength - 22;
+  const minOffset = Math.max(0, buffer.byteLength - 22 - 65535);
+  while (offset > minOffset && view.getUint32(offset, true) !== 0x06054b50) offset--;
+  if (view.getUint32(offset, true) !== 0x06054b50) throw new Error('Not a valid .mxl (zip) archive.');
+
+  const cdCount = view.getUint16(offset + 10, true);
+  let cdOffset = view.getUint32(offset + 16, true);
+
+  for (let i = 0; i < cdCount; i++) {
+    if (view.getUint32(cdOffset, true) !== 0x02014b50) break;
+    const compMethod = view.getUint16(cdOffset + 10, true);
+    const compSize = view.getUint32(cdOffset + 20, true);
+    const nameLen = view.getUint16(cdOffset + 28, true);
+    const extraLen = view.getUint16(cdOffset + 32, true);
+    const commLen = view.getUint16(cdOffset + 34, true);
+    const localHeaderOffset = view.getUint32(cdOffset + 42, true);
+    const nameBytes = new Uint8Array(buffer, cdOffset + 46, nameLen);
+    const fileName = new TextDecoder().decode(nameBytes).replace(/\\/g, '/');
+    const isScoreFile = fileName.toLowerCase().endsWith('.musicxml') ||
+      (fileName.toLowerCase().endsWith('.xml') && fileName.indexOf('META-INF') === -1);
+
+    if (isScoreFile) {
+      const lhView = new DataView(buffer, localHeaderOffset, 30);
+      const lhNameLen = lhView.getUint16(26, true);
+      const lhExtraLen = lhView.getUint16(28, true);
+      const dataOffset = localHeaderOffset + 30 + lhNameLen + lhExtraLen;
+      const rawData = new Uint8Array(buffer, dataOffset, compSize);
+      if (compMethod === 0) return new TextDecoder('utf-8').decode(rawData);
+      if (compMethod === 8) {
+        if (typeof DecompressionStream === 'undefined') throw new Error('This browser can\'t unzip .mxl files.');
+        const ds = new DecompressionStream('deflate-raw');
+        const writer = ds.writable.getWriter();
+        const done = writer.write(rawData).then(() => writer.close());
+        const text = await new Response(ds.readable).text();
+        await done;
+        return text;
+      }
+      throw new Error('Unsupported compression in .mxl.');
+    }
+    cdOffset += 46 + nameLen + extraLen + commLen;
+  }
+  throw new Error('No score found inside the .mxl archive.');
+}
+
+const MUSIC_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16V3.36611C22 2.12848 20.8873 1.18793 19.6669 1.39403L8.66694 3.25181C7.70452 3.41435 7 4.24784 7 5.22388V14.126C6.68038 14.0438 6.3453 14 6 14C3.79086 14 2 15.7909 2 18C2 20.2091 3.79086 22 6 22C8.20914 22 10 20.2091 10 18V6.06916L19 4.54916V12.126C18.6804 12.0438 18.3453 12 18 12C15.7909 12 14 13.7909 14 16C14 18.2091 15.7909 20 18 20C20.2091 20 22 18.2091 22 16Z" fill="#ffffff"></path></svg>';
+
+function buildMusicPreview(file) {
+  const box = el('div', 'music-preview');
+  box.title = 'Generate preview';
+  const icon = el('div', 'music-preview-icon');
+  icon.innerHTML = MUSIC_ICON_SVG;
+  box.appendChild(icon);
+  box.appendChild(el('div', 'music-preview-label', 'Generate preview?'));
+  box.addEventListener('click', () => openMusicViewer(file));
+  return box;
+}
+
+function openMusicViewer(file) {
+  const panel = el('div', 'text-viewer music-viewer');
+  const head = el('div', 'text-viewer-head');
+  head.appendChild(el('span', 'text-viewer-name', file.name));
+  const zoomOut = el('button', 'icon-btn', 'A\u2212');
+  const zoomIn = el('button', 'icon-btn', 'A+');
+  zoomOut.type = 'button';
+  zoomIn.type = 'button';
+  head.appendChild(zoomOut);
+  head.appendChild(zoomIn);
+  head.appendChild(buildDownloadLink(file));
+  panel.appendChild(head);
+
+  const body = el('div', 'music-viewer-body');
+  panel.appendChild(body);
+
+  const hud = el('div', 'music-hud');
+  const hudStatus = el('div', 'music-hud-status', 'Starting…');
+  const hudSub = el('div', 'music-hud-sub', 'This may take a few seconds.');
+  const barFrame = el('div', 'music-bar-frame');
+  const barFill = el('div', 'music-bar-fill');
+  barFrame.appendChild(barFill);
+  hud.appendChild(hudStatus);
+  hud.appendChild(hudSub);
+  hud.appendChild(barFrame);
+  body.appendChild(hud);
+
+  const stage = el('div', 'music-stage');
+  stage.hidden = true;
+  body.appendChild(stage);
+
+  openOverlay(panel, false);
+
+  let target = 0;
+  let shown = 0;
+  let raf = null;
+  let osmd = null;
+  let zoom = 1;
+
+  function tick() {
+    shown += (target - shown) * 0.12 + 0.15;
+    if (shown > target) shown = target;
+    if (shown > 100) shown = 100;
+    barFill.style.width = shown + '%';
+    if (Math.abs(target - shown) > 0.3) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = null;
+      if (target >= 100) setTimeout(() => { hud.hidden = true; }, 400);
+    }
+  }
+  function setBar(pct, text) {
+    target = pct;
+    hudStatus.textContent = text;
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+  function fail(msg) {
+    hudStatus.textContent = 'Error';
+    hudSub.textContent = msg;
+    barFill.classList.add('error');
+    setBar(100, 'Error');
+  }
+
+  (async () => {
+    try {
+      setBar(10, 'Starting notation engine…');
+      const ok = await ensureOsmdEngine();
+      if (!ok) throw new Error('Could not load the notation engine.');
+
+      setBar(30, 'Reading file…');
+      let xml;
+      if (/\.mxl$/i.test(file.name)) {
+        const buf = dataUrlToArrayBuffer(file.data);
+        setBar(45, 'Decompressing score data…');
+        xml = await unzipMXL(buf);
+      } else {
+        xml = decodeText(file.data) || '';
+      }
+
+      setBar(65, 'Parsing score…');
+      stage.hidden = false;
+      const Engine = window.opensheetmusicdisplay.OpenSheetMusicDisplay;
+      osmd = new Engine(stage, { autoResize: true, backend: 'svg', drawTitle: true, drawSubtitle: true, drawComposer: true, drawCredits: true });
+      await osmd.load(xml);
+
+      setBar(90, 'Engraving staff systems…');
+      await new Promise((r) => setTimeout(r, 100));
+      osmd.render();
+
+      setBar(100, 'Ready');
+    } catch (err) {
+      stage.hidden = true;
+      fail(err && err.message ? err.message : String(err));
+    }
+  })();
+
+  function applyZoom(next) {
+    zoom = Math.min(3, Math.max(0.4, Math.round(next * 100) / 100));
+    if (osmd && osmd.Sheet) {
+      osmd.Zoom = zoom;
+      osmd.render();
+    }
+  }
+  zoomIn.addEventListener('click', () => applyZoom(zoom + 0.1));
+  zoomOut.addEventListener('click', () => applyZoom(zoom - 0.1));
+}
+
+// ---------- bubbles ----------
+function buildQuote(rt) {
+  const q = el('div', 'reply-quote');
+  q.appendChild(el('div', 'reply-quote-name', String(rt.user || '')));
+  q.appendChild(el('div', 'reply-quote-text', String(rt.snippet || '')));
+  q.addEventListener('click', (e) => { e.stopPropagation(); jumpTo(rt.id); });
+  return q;
+}
+
+function appendTextWithMentions(parent, text, mentions, bubble) {
+  const names = (mentions || []).filter(Boolean).map(String).sort((a, b) => b.length - a.length);
+  if (!names.length) { parent.textContent = text; return; }
+  const re = new RegExp('@(' + names.map(escapeRe).join('|') + ')(?![A-Za-z0-9_])', 'gi');
+  let last = 0;
+  let m;
+  while ((m = re.exec(text))) {
+    if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+    const span = el('span', 'mention', m[0]);
+    if (lc(m[1]) === lc(myName) && !bubble.classList.contains('own')) {
+      span.classList.add('mention-me');
+      bubble.classList.add('mentions-me');
+    }
+    parent.appendChild(span);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+}
+
+function buildBubble(msg, own) {
+  const bubble = el('div', 'bubble ' + (own ? 'own' : 'other'));
+  const hasFile = !!msg.file;
+  const hasText = !!msg.text;
+
+  const buildFileSeg = () => {
+    const s = el('div', 'bubble-segment file-segment');
+    s.appendChild(buildFileContent(msg.file));
+    return s;
+  };
+  
+  const buildTextSeg = (isInner) => {
+    const s = isInner ? el('div', 'bubble-segment text-segment') : bubble;
+    const emojiCount = (!msg.whisper && !msg.replyTo) ? bigEmojiCount(msg.text) : 0;
+    if (emojiCount > 0) {
+      s.classList.add('big-emoji', 'emoji-' + emojiCount);
+      s.textContent = msg.text;
+    } else {
+      const body = el('span', 'bubble-text');
+      appendTextWithMentions(body, msg.text, msg.mentions, bubble);
+      s.appendChild(body);
+    }
+    return s;
+  };
+
+  if (hasFile && hasText) {
+    bubble.classList.add('has-multi');
+    if (msg.file.category === 'image') bubble.classList.add('has-image');
+    const f = buildFileSeg();
+    const t = buildTextSeg(true);
+    
+    if (msg.whisper) {
+      bubble.classList.add('whisper');
+      f.insertBefore(el('div', 'whisper-label', own ? 'Whisper to ' + msg.whisper.toName : 'Whisper'), f.firstChild);
+    }
+    if (msg.replyTo) {
+      f.insertBefore(buildQuote(msg.replyTo), f.firstChild);
+    }
+    bubble.appendChild(f);
+    bubble.appendChild(t);
+  } else {
+    if (msg.whisper) {
+      bubble.classList.add('whisper');
+      bubble.appendChild(el('div', 'whisper-label', own ? 'Whisper to ' + msg.whisper.toName : 'Whisper'));
+    }
+    if (msg.replyTo) bubble.appendChild(buildQuote(msg.replyTo));
+    
+    if (hasFile) {
+      bubble.classList.add('file-bubble');
+      bubble.appendChild(buildFileContent(msg.file));
+    } else if (hasText) {
+      buildTextSeg(false);
+    }
+  }
+
+  return bubble;
+}
+
+// ---------- hover menu ----------
+function actBtn(label, icon, fn, extra) {
+  const b = el('button', 'act-btn' + (extra ? ' ' + extra : ''));
+  b.type = 'button';
+  b.title = label;
+  b.setAttribute('aria-label', label);
+  b.innerHTML = icon;
+  b.addEventListener('click', (e) => { e.stopPropagation(); fn(); });
+  return b;
+}
+
+function buildActions(msg, own) {
+  const wrap = el('div', 'msg-actions ' + (own ? 'own' : 'other'));
+  const pill = el('div', 'act-pill');
+  const main = el('div', 'act-main');
+  const picker = el('div', 'act-picker');
+  pill.appendChild(main);
+  pill.appendChild(picker);
+  wrap.appendChild(pill);
+
+  main.appendChild(actBtn('Reply', REPLY_ICON, () => { startReply(msg); closeMenus(); }));
+  main.appendChild(actBtn('React', SMILE_ICON, () => wrap.classList.toggle('picking')));
+  if (isAdmin) main.appendChild(actBtn('Delete for everyone', TRASH_ICON, () => adminDelete(msg.id), 'danger'));
+
+  REACTIONS.forEach((emoji) => {
+    const b = el('button', 'act-emoji', emoji);
+    b.type = 'button';
+    b.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sendReaction(msg.id, emoji);
+      wrap.classList.remove('picking');
+      closeMenus();
+    });
+    picker.appendChild(b);
+  });
+  return wrap;
+}
+
+function closeMenus() {
+  document.querySelectorAll('.msg-row.menu-open').forEach((r) => r.classList.remove('menu-open'));
+}
+
+// ---------- rendering ----------
+function renderMessage(msg, noScroll, noAnim) {
+  const own = msg.clientId === myClientId;
+  const nearBottom = messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 160;
+  const dividerInserted = maybeInsertDivider(msg.timestamp);
+  const freshGroup = dividerInserted || !lastRender || lastRender.clientId !== msg.clientId;
+  const deleted = deletedIds.has(msg.id);
+
+  const row = el('div', 'msg-row ' + (own ? 'own' : 'other') + (freshGroup ? '' : ' grouped') + (deleted ? ' deleted' : '') + (noAnim ? ' no-anim' : ''));
+  row.dataset.id = msg.id;
+
+  if (!own) {
+    if (freshGroup) {
+      const av = buildAvatarEl(msg.user, msg.clientId);
+      av.classList.add('clickable');
+      av.addEventListener('click', () => tagUserInComposer(msg.user));
+      row.appendChild(av);
+    } else {
+      row.appendChild(el('div', 'avatar-spacer'));
+    }
+  }
+
+  const col = el('div', 'bubble-col');
+  if (!own && freshGroup) {
+    const nameEl = el('div', 'sender-name');
+    const avInfo = avatarInfo(msg.clientId);
+    nameEl.style.color = avatarColorFor(msg.user, avInfo);
+    nameEl.appendChild(document.createTextNode(msg.user));
+    nameEl.appendChild(el('span', 'sender-time', clock(msg.timestamp)));
+    col.appendChild(nameEl);
+  }
+
+  const wrap = el('div', 'bubble-wrap');
+  wrap.title = deleted ? 'Deleted for everyone' : fullStamp(msg.timestamp);
+  const bubble = buildBubble(msg, own);
+  bubble.classList.add('tail');
+  if (!deleted) wrap.appendChild(buildActions(msg, own));
+  wrap.appendChild(bubble);
+  wrap.appendChild(el('span', 'msg-time', clock(msg.timestamp)));
+  wrap.addEventListener('mouseleave', () => {
+    const a = wrap.querySelector('.msg-actions');
+    if (a) a.classList.remove('picking');
+  });
+  col.appendChild(wrap);
+
+  const reactionsEl = el('div', 'reactions');
+  reactionsEl.hidden = true;
+  col.appendChild(reactionsEl);
+  row.appendChild(col);
+
+  row.addEventListener('click', (e) => {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    if (e.target.closest('a,button,img,.text-preview,.audio-track,.reply-quote')) return;
+    const wasOpen = row.classList.contains('menu-open');
+    closeMenus();
+    if (!wasOpen) row.classList.add('menu-open');
+  });
+
+  messagesEl.appendChild(row);
+  messageEls.set(msg.id, { row, bubble, reactionsEl, msg });
+  renderReactions(msg.id);
+
+  if (!freshGroup && lastBubbleEl) lastBubbleEl.classList.remove('tail');
+  lastBubbleEl = bubble;
+  lastRender = { clientId: msg.clientId, ts: msg.timestamp };
+
+  if (!noScroll) {
+    if (nearBottom || own) {
+      scrollToBottom(false);
+    } else {
+      unreadCount++;
+      checkScrollPos();
+    }
+  }
+}
+
+function rebuildFeed() {
+  messagesEl.innerHTML = '';
+  messageEls.clear();
+  lastRender = null;
+  lastBubbleEl = null;
+  if (olderHistory.length) {
+    loadEarlierBtn.textContent = 'Show earlier messages (' + olderHistory.length + ')';
+    messagesEl.appendChild(loadEarlierBtn);
+  }
+  feed.forEach((m) => renderMessage(m, true, true));
+}
+
+function loadEarlier() {
+  const prevH = messagesEl.scrollHeight;
+  const prevTop = messagesEl.scrollTop;
+  feed = olderHistory.splice(-HISTORY_SHOW).concat(feed);
+  rebuildFeed();
+  messagesEl.scrollTop = prevTop + (messagesEl.scrollHeight - prevH);
+}
+
+function addSystemMessage(text) {
+  messagesEl.appendChild(el('div', 'msg-row system', text));
+  lastRender = null;
+  lastBubbleEl = null;
+  scrollToBottom(false);
+}
+
+function scrollToBottom(smooth = false) {
+  if (smooth) {
+    messagesEl.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' });
+  } else {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+  unreadCount = 0;
+  checkScrollPos();
+}
+
+function jumpTo(id) {
+  const entry = messageEls.get(id);
+  if (!entry) return;
+  entry.row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  entry.row.classList.remove('flash');
+  void entry.row.offsetWidth;
+  entry.row.classList.add('flash');
+}
+
+// ---------- reactions ----------
+function sendReaction(targetId, emoji) {
+  if (!client || !client.connected) return;
+  const mine = reactions.get(targetId) && reactions.get(targetId).get(myClientId);
+  client.publish(topic, JSON.stringify({
+    type: 'react',
+    targetId: targetId,
+    emoji: mine && mine.emoji === emoji ? null : emoji,
+    user: myName,
+    clientId: myClientId,
+  }));
+}
+
+function applyReaction(data) {
+  if (!data.targetId || !data.clientId) return;
+  let m = reactions.get(data.targetId);
+  if (!m) { m = new Map(); reactions.set(data.targetId, m); }
+  if (data.emoji && REACTIONS.indexOf(data.emoji) !== -1) m.set(data.clientId, { emoji: data.emoji, user: String(data.user || '') });
+  else m.delete(data.clientId);
+  renderReactions(data.targetId);
+}
+
+function renderReactions(id) {
+  const entry = messageEls.get(id);
+  if (!entry) return;
+  const box = entry.reactionsEl;
+  box.innerHTML = '';
+  const m = reactions.get(id);
+  if (!m || !m.size) { box.hidden = true; return; }
+  box.hidden = false;
+  const groups = new Map();
+  m.forEach((r, cid) => {
+    if (!groups.has(r.emoji)) groups.set(r.emoji, []);
+    groups.get(r.emoji).push({ cid, name: r.user });
+  });
+  groups.forEach((list, emoji) => {
+    const chip = el('button', 'reaction-chip' + (list.some((x) => x.cid === myClientId) ? ' mine' : ''), emoji + (list.length > 1 ? ' ' + list.length : ''));
+    chip.type = 'button';
+    chip.title = list.map((x) => x.name).join(', ');
+    chip.addEventListener('click', () => sendReaction(id, emoji));
+    box.appendChild(chip);
+  });
+}
+
+// ---------- message intake ----------
+function acceptMessage(msg) {
+  if (!msg || !msg.id || !msg.user || !msg.timestamp) return;
+  if (seenIds.has(msg.id)) return;
+  seenIds.add(msg.id);
+  msg.user = String(msg.user).slice(0, 40);
+  if (!msg.whisper && !(msg.file && msg.file.expired)) noteHistory(msg.id, msg.timestamp);
+  if (!canSee(msg)) return;
+  if (deletedIds.has(msg.id) && !isAdmin) return;
+  feed.push(msg);
+  renderMessage(msg);
+}
+
+function handleLive(data) {
+  if (data.type === 'react') applyReaction(data);
+  else if (data.type === 'delete') handleDelete(data.id);
+  else if (data.type === 'message' || data.type === 'file') {
+    if (historyLoading) pendingLive.push(data);
+    else acceptMessage(data);
+  }
+}
+
+// ---------- history ----------
+function histCopy(msg) {
+  return Object.assign({}, msg);
+}
+
+function clearHistory(id) {
+  histIds.delete(id);
+  if (client && client.connected) client.publish(histTopic + '/' + id, '', { qos: 1, retain: true });
+}
+
+function noteHistory(id, ts) {
+  histIds.set(id, ts);
+  if (histIds.size <= HISTORY_KEEP) return;
+  const sorted = Array.from(histIds.entries()).sort((a, b) => a[1] - b[1]);
+  sorted.slice(0, sorted.length - HISTORY_KEEP).forEach((pair) => clearHistory(pair[0]));
+}
+
+function startHistoryLoad() {
+  historyLoading = true;
+  histTimer = setTimeout(finalizeHistory, 1200);
+}
+
+function handleHistoryMessage(data, packet) {
+  if (!packet || !packet.retain) return;
+  if (!data.id) return;
+  histIds.set(data.id, data.timestamp);
+  if (historyLoading) {
+    histBatch.push(data);
+    clearTimeout(histTimer);
+    histTimer = setTimeout(finalizeHistory, 600);
+  } else if (!seenIds.has(data.id)) {
+    acceptMessage(data);
+  }
+}
+
+function finalizeHistory() {
+  historyLoading = false;
+  histBatch.sort((a, b) => a.timestamp - b.timestamp);
+  histBatch.splice(0, Math.max(0, histBatch.length - HISTORY_KEEP)).forEach((m) => clearHistory(m.id));
+  histBatch.forEach((m) => {
+    seenIds.add(m.id);
+    m.user = String(m.user || '?').slice(0, 40);
+  });
+  const visible = histBatch.filter((m) => m.user && !deletedIds.has(m.id));
+  olderHistory = visible.slice(0, Math.max(0, visible.length - HISTORY_SHOW));
+  feed = visible.slice(-HISTORY_SHOW);
+  histBatch = [];
+
+  const queued = pendingLive;
+  pendingLive = [];
+  rebuildFeed();
+  queued.forEach(acceptMessage);
+  if (!feed.length) addSystemMessage('No messages yet. Say hi!');
+  scrollToBottom(false);
+}
+
+// ---------- admin ----------
+let logoClicks = 0;
+let logoTimer = null;
+
+function setAdmin(on) {
+  isAdmin = on;
+  if (on) setStorage(ADMIN_KEY, '1');
+  else removeStorage(ADMIN_KEY);
+  adminPill.hidden = !on;
+  adminBar.hidden = !on;
+  adminBannedBar.hidden = !on || bannedUsers.size === 0;
+  if (!on) feed = feed.filter((m) => !deletedIds.has(m.id));
+  renderAdminBar();
+  renderBannedList();
+  rebuildFeed();
+  scrollToBottom(false);
+}
+
+function renderAdminBar() {
+  adminUsersEl.innerHTML = '';
+  if (!isAdmin) return;
+  let count = 0;
+  onlineUsers.forEach((u, id) => {
+    if (id === myClientId) return;
+    count++;
+    const chip = el('div', 'admin-user');
+    chip.appendChild(buildAvatarEl(u.name, id, 'mini'));
+    chip.appendChild(el('span', 'admin-user-name', u.name));
+    
+    const edit = el('button', 'admin-btn', 'Edit');
+    edit.type = 'button';
+    edit.addEventListener('click', () => openSettings(id));
+    
+    const kick = el('button', 'admin-btn', 'Kick');
+    kick.type = 'button';
+    kick.addEventListener('click', () => adminKick(id));
+    
+    const ban = el('button', 'admin-btn danger', 'Ban');
+    ban.type = 'button';
+    ban.addEventListener('click', () => openBanModal(id, u.name));
+    
+    chip.appendChild(edit);
+    chip.appendChild(kick);
+    chip.appendChild(ban);
+    adminUsersEl.appendChild(chip);
+  });
+  if (!count) adminUsersEl.appendChild(el('span', 'admin-empty', 'Nobody else is online'));
+}
+
+function renderBannedList() {
+  adminBannedUsersEl.innerHTML = '';
+  if (!isAdmin) return;
+  let count = 0;
+  const now = Date.now();
+  bannedUsers.forEach((u, id) => {
+    if (u.until <= now) {
+      bannedUsers.delete(id);
+      return;
+    }
+    count++;
+    const timeLeft = Math.max(0, Math.ceil((u.until - now) / 60000));
+    const chip = el('div', 'admin-user');
+    chip.appendChild(el('span', 'admin-user-name', u.name));
+    chip.appendChild(el('span', 'file-size', timeLeft + 'm left'));
+    
+    const unban = el('button', 'admin-btn', 'Unban');
+    unban.type = 'button';
+    unban.addEventListener('click', () => adminUnban(id));
+    
+    const change = el('button', 'admin-btn', 'Change Time');
+    change.type = 'button';
+    change.addEventListener('click', () => openBanModal(id, u.name));
+    
+    chip.appendChild(unban);
+    chip.appendChild(change);
+    adminBannedUsersEl.appendChild(chip);
+  });
+  adminBannedBar.hidden = count === 0;
+}
+
+function adminKick(id) {
+  if (!isAdmin || !client || !client.connected) return;
+  client.publish(ctlBase + '/' + id, JSON.stringify({ type: 'kick' }));
+}
+
+function adminBan(id, name, ms) {
+  if (!isAdmin || !client || !client.connected || !ms) return;
+  client.publish(banBase + '/' + id, JSON.stringify({ until: Date.now() + ms, name: name }), { qos: 1, retain: true });
+  adminKick(id);
+}
+
+function adminUnban(id) {
+  if (!isAdmin || !client || !client.connected) return;
+  client.publish(banBase + '/' + id, '', { qos: 1, retain: true });
+  bannedUsers.delete(id);
+  renderBannedList();
+}
+
+function openBanModal(id, name) {
+  banTargetId = id;
+  banTargetName = name;
+  banModalName.textContent = name;
+  banCustomInput.value = '1';
+  banModal.hidden = false;
+}
+function closeBanModal() {
+  banModal.hidden = true;
+  banTargetId = null;
+}
+function confirmBan(minutes) {
+  if (!banTargetId || !minutes || minutes <= 0) return;
+  adminBan(banTargetId, banTargetName, minutes * 60 * 1000);
+  closeBanModal();
+}
+
+function adminDelete(id) {
+  if (!isAdmin || !client || !client.connected) return;
+  client.publish(topic, JSON.stringify({ type: 'delete', id: id }));
+  clearHistory(id);
+}
+
+function handleDelete(id) {
+  if (!id) return;
+  deletedIds.add(id);
+  histIds.delete(id);
+  olderHistory = olderHistory.filter((m) => m.id !== id);
+  const entry = messageEls.get(id);
+  if (isAdmin) {
+    if (entry) {
+      entry.row.classList.add('deleted');
+      const actions = entry.row.querySelector('.msg-actions');
+      if (actions) actions.remove();
+    }
+    return;
+  }
+  const idx = feed.findIndex((m) => m.id === id);
+  if (idx !== -1) {
+    feed.splice(idx, 1);
+    rebuildFeed();
+  }
+}
+
+function openAdminModal() {
+  adminPass.value = '';
+  adminError.hidden = true;
+  adminModal.hidden = false;
+  adminPass.focus();
+}
+function closeAdminModal() {
+  adminModal.hidden = true;
+}
+
+// ---------- kicked / banned ----------
+function showBlock(title, text, showRejoin) {
+  closeOverlay();
+  closeAdminModal();
+  chatApp.hidden = true;
+  nameGate.hidden = true;
+  document.body.classList.remove('in-chat');
+  blockTitle.textContent = title;
+  blockText.textContent = text;
+  blockBtn.hidden = !showRejoin;
+  blockScreen.hidden = false;
+}
+
+function leaveRoom() {
+  if (left) return;
+  left = true;
+  if (!client) return;
+  if (roomJoined && client.connected) {
+    client.publish(myPresenceTopic(), JSON.stringify({ name: myName, status: 'offline' }), { qos: 1, retain: true });
+  }
+}
+
+function handleKicked() {
+  if (blocked) return;
+  blocked = true;
+  leaveRoom();
+  showBlock('You were kicked', 'An admin removed you from the chat. You can rejoin whenever you like.', true);
+}
+
+function handleBan(until) {
+  if (until <= Date.now()) {
+    if (client && client.connected) client.publish(banTopic(), '', { qos: 1, retain: true });
+    return;
+  }
+  blocked = true;
+  leaveRoom();
+  const text = () => {
+    const s = Math.max(0, Math.ceil((until - Date.now()) / 1000));
+    return 'An admin banned you. You can come back in ' + Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0') + '.';
+  };
+  showBlock('You\'re banned', text(), false);
+  clearInterval(banTimer);
+  banTimer = setInterval(() => {
+    if (until - Date.now() <= 0) {
+      clearInterval(banTimer);
+      blockTitle.textContent = 'Ban expired';
+      blockText.textContent = 'You can rejoin the chat now.';
+      blockBtn.hidden = false;
+    } else {
+      blockText.textContent = text();
+    }
+  }, 1000);
+}
+
+// ---------- presence ----------
+function handlePresence(recvTopic, data) {
+  const clientId = recvTopic.slice((presenceTopic + '/').length);
+  if (data.status === 'online') {
+    let avatar = null;
+    const a = data.avatar;
+    if (a && typeof a === 'object') {
+      if ((a.type === 'upload' || a.type === 'link') && typeof a.value === 'string' && a.value) {
+        avatar = { type: a.type, value: a.value };
+        if (validHexColor(a.color)) avatar.color = a.color;
+      } else if (a.type === 'initials') {
+        avatar = { type: 'initials' };
+        if (validHexColor(a.color)) avatar.color = a.color;
+      }
+    }
+    onlineUsers.set(clientId, { name: String(data.name || '?').slice(0, 40), ts: data.ts || Date.now(), avatar: avatar });
+
+    if (clientId !== myClientId && lc(data.name) === lc(myName)) {
+      resolveNameCollision();
+    }
+  } else {
+    onlineUsers.delete(clientId);
+  }
+  renderPresence();
+}
+
+function resolveNameCollision() {
+  if (!myName) return;
+  let baseName = myName.replace(/ \(\d+\)$/, '');
+  let counter = 2;
+  let newName = myName;
+  while (isNameTaken(newName, myClientId)) {
+    newName = baseName + ' (' + counter + ')';
+    counter++;
+  }
+  if (newName !== myName) {
+    myName = newName;
+    setStorage(NAME_KEY, myName);
+    showToast('Name was taken. You are now ' + myName);
+    publishPresence();
+    if (!settingsModal.hidden && !settingsTargetUser) {
+      settingsName.value = myName;
+      if (settingsDraft) settingsDraft.name = myName;
+    }
+  }
+}
+
+function renderPresence() {
+  presenceListEl.innerHTML = '';
+  onlineUsers.forEach((u, id) => {
+    const av = buildAvatarEl(u.name, id);
+    av.classList.add('clickable');
+    av.addEventListener('click', () => openAvatarPreview(u.name, id));
+    presenceListEl.appendChild(av);
+  });
+  onlineCountEl.textContent = onlineUsers.size ? onlineUsers.size + ' online' : '';
+  renderAdminBar();
+}
+
+// ---------- mqtt ----------
+function myPresenceTopic() { return presenceTopic + '/' + myClientId; }
+function ctlTopic() { return ctlBase + '/' + myClientId; }
+function banTopic() { return banBase + '/' + myClientId; }
+
+function connectMqtt() {
+  if (typeof mqtt === 'undefined' || !mqtt || typeof mqtt.connect !== 'function') {
+    addSystemMessage('Chat library failed to load. Check your connection and reload the page.');
+    return;
+  }
+  if (client && client.connected) {
+    try { client.end(true); } catch(e) {}
+  }
+  client = mqtt.connect(brokerUrl, {
+    clientId: 'toastercade_' + myClientId + '_' + Math.random().toString(36).slice(2, 6),
+    clean: true,
+    will: {
+      topic: myPresenceTopic(),
+      payload: JSON.stringify({ name: myName, status: 'offline' }),
+      qos: 1,
+      retain: true,
+    },
+  });
+
+  client.on('connect', onConnect);
+  client.on('reconnect', () => { if (!blocked) addSystemMessage('Reconnecting…'); });
+  client.on('error', (err) => { if (!blocked) addSystemMessage('Connection error: ' + err.message); });
+  client.on('message', onMessage);
+
+  window.addEventListener('beforeunload', () => {
+    if (client && client.connected && roomJoined) {
+      client.publish(myPresenceTopic(), JSON.stringify({ name: myName, status: 'offline' }), { qos: 1, retain: true });
+    }
+  });
+}
+
+function onConnect() {
+  client.subscribe([ctlTopic(), banTopic(), banBase + '/+']);
+  if (!joinedOnce) {
+    joinedOnce = true;
+    addSystemMessage('Connected to Toasterchat');
+    setTimeout(() => { if (!blocked) joinRoom(); }, 700);
+  } else if (roomJoined && !blocked) {
+    joinRoom();
+  }
+}
+
+function publishPresence() {
+  if (!client || !client.connected || !roomJoined) return;
+  client.publish(myPresenceTopic(), JSON.stringify({ name: myName, status: 'online', ts: Date.now(), avatar: myAvatar }), { qos: 1, retain: true });
+}
+
+function joinRoom() {
+  roomJoined = true;
+  client.subscribe([topic, histTopic + '/+', presenceTopic + '/+']);
+  publishPresence();
+  if (!historyStarted) {
+    historyStarted = true;
+    startHistoryLoad();
+  }
+}
+
+function onMessage(t, payload, packet) {
+  if (!payload || payload.length === 0) {
+    if (t.indexOf(banBase + '/') === 0) {
+      const id = t.slice(banBase.length + 1);
+      bannedUsers.delete(id);
+      renderBannedList();
+      if (id === myClientId && blocked) {
+        showToast('You have been unbanned.');
+        blocked = false;
+        clearInterval(banTimer);
+        blockScreen.hidden = true;
+        chatApp.hidden = false;
+        nameGate.hidden = true;
+        document.body.classList.add('in-chat');
+        publishPresence();
+      }
+    }
+    return;
+  }
+  
+  let data;
+  try { data = JSON.parse(payload.toString()); } catch (e) { return; }
+  if (!data || typeof data !== 'object') return;
+
+  if (t.indexOf(presenceTopic + '/') === 0) handlePresence(t, data);
+  else if (t === ctlTopic()) {
+    if (data.type === 'kick') handleKicked();
+    else if (data.type === 'force_profile') {
+      let changes = [];
+      if (data.name && data.name !== myName) {
+        myName = String(data.name).slice(0, 24);
+        setStorage(NAME_KEY, myName);
+        changes.push('name to ' + myName);
+      }
+      if (data.avatar && JSON.stringify(data.avatar) !== JSON.stringify(myAvatar)) {
+        myAvatar = data.avatar;
+        setStorage(AVATAR_KEY, JSON.stringify(myAvatar));
+        changes.push('profile picture');
+      }
+      if (changes.length) {
+        showToast('An admin changed your ' + changes.join(' and ') + '.');
+        if (!settingsModal.hidden && !settingsTargetUser) {
+          settingsName.value = myName;
+          if (settingsDraft) {
+            settingsDraft.name = myName;
+            settingsDraft.avatar = JSON.parse(JSON.stringify(myAvatar));
+          }
+          renderAvatarPreview();
+          syncAvatarColorSelection();
+        }
+      }
+      renderAvatarPreview();
+      publishPresence();
+    }
+  }
+  else if (t === banTopic()) { if (data.until) handleBan(Number(data.until)); }
+  else if (t.indexOf(banBase + '/') === 0) {
+    const id = t.slice(banBase.length + 1);
+    bannedUsers.set(id, { name: data.name || 'User', until: data.until });
+    renderBannedList();
+  }
+  else if (t.indexOf(histTopic + '/') === 0) handleHistoryMessage(data, packet);
+  else if (t === topic) handleLive(data);
+}
+
+// ---------- composer ----------
+function outgoingContext() {
+  const ctx = {};
+  if (replyTarget) {
+    ctx.replyTo = { id: replyTarget.id, user: replyTarget.user, snippet: replyTarget.snippet };
+    if (replyTarget.whisper) ctx.whisper = replyTarget.whisper;
+  }
+  return ctx;
+}
+
+function publishChat(msg) {
+  const opts = msg.whisper ? { qos: 1 } : {};
+  client.publish(topic, JSON.stringify(msg), opts);
+  if (!msg.whisper) {
+    client.publish(histTopic + '/' + msg.id, JSON.stringify(histCopy(msg)), { qos: 1, retain: true });
+  }
+}
+
+function sendText() {
+  const raw = messageInput.value.trim();
+  if ((!raw && !pendingFile) || !client || !client.connected || blocked) return;
+
+  const ctx = outgoingContext();
+  let text = raw;
+  if (raw[0] === '*') {
+    const u = matchUserAt(raw.slice(1));
+    if (!u) { showError('Nobody by that name is online to whisper to.'); return; }
+    if (u.id === myClientId) { showError('You can\'t whisper to yourself.'); return; }
+    text = raw.slice(1 + u.name.length).trim();
+    if (!text && !pendingFile) { showError('Add a message after *' + u.name + '.'); return; }
+    ctx.whisper = { toId: u.id, toName: u.name };
+  }
+
+  const msg = Object.assign({
+    type: 'message',
+    id: cryptoRandomId(),
+    user: myName,
+    clientId: myClientId,
+    timestamp: Date.now(),
+    text: text,
+  }, ctx);
+  if (pendingFile) msg.file = pendingFile;
+  const mentions = findMentions(text);
+  if (mentions.length) msg.mentions = mentions;
+
+  publishChat(msg);
+  messageInput.value = '';
+  pendingFile = null;
+  renderAttachPreview();
+  replyTarget = null;
+  hideMentionMenu();
+  updateSendButtonState();
+  updateCtxBar();
+  messageInput.focus();
+}
+
+function startReply(msg) {
+  let whisper = null;
+  if (msg.whisper) {
+    whisper = msg.clientId === myClientId
+      ? { toId: msg.whisper.toId, toName: msg.whisper.toName }
+      : { toId: msg.clientId, toName: msg.user };
+  }
+  replyTarget = { id: msg.id, user: msg.user, snippet: snippetOf(msg), whisper: whisper };
+  updateCtxBar();
+  messageInput.focus();
+}
+
+function updateCtxBar() {
+  const w = currentWhisper();
+  ctxBar.hidden = !(replyTarget || w);
+  if (ctxBar.hidden) return;
+  ctxText.innerHTML = '';
+  if (replyTarget) ctxText.appendChild(el('span', 'ctx-line', 'Replying to ' + replyTarget.user + ': ' + replyTarget.snippet));
+  if (w) ctxText.appendChild(el('span', 'ctx-line ctx-whisper', 'Whispering to ' + w.toName + ' — only you and ' + w.toName + ' can see this'));
+  ctxClose.hidden = !replyTarget;
+}
+
+function updateSendButtonState() {
+  sendBtn.disabled = messageInput.value.trim().length === 0 && !pendingFile;
+}
+
+// @ / * autocomplete
+function hideMentionMenu() {
+  mentionMenu.hidden = true;
+  mentionItems = [];
+}
+
+function renderMentionMenu() {
+  mentionMenu.innerHTML = '';
+  mentionItems.forEach((item, i) => {
+    const li = el('li', i === mentionIndex ? 'active' : '');
+    li.appendChild(buildAvatarEl(item.name, item.id, 'mini'));
+    li.appendChild(el('span', null, item.name));
+    li.addEventListener('mousedown', (e) => { e.preventDefault(); pickMention(item); });
+    mentionMenu.appendChild(li);
+  });
+  mentionMenu.hidden = false;
+}
+
+function updateMentionMenu() {
+  const pos = messageInput.selectionStart;
+  const before = messageInput.value.slice(0, pos);
+  const m = /(^|\s)([@*])([^\s@*]*)$/.exec(before);
+  if (!m) return hideMentionMenu();
+  const start = before.length - m[2].length - m[3].length;
+  if (m[2] === '*' && start !== 0) return hideMentionMenu();
+  const q = lc(m[3]);
+  const items = [];
+  onlineUsers.forEach((u, id) => {
+    if (id !== myClientId && lc(u.name).indexOf(q) !== -1) items.push({ id, name: u.name });
+  });
+  if (!items.length) return hideMentionMenu();
+  items.sort((a, b) => (lc(a.name).indexOf(q) === 0 ? 0 : 1) - (lc(b.name).indexOf(q) === 0 ? 0 : 1));
+  mentionItems = items.slice(0, 5);
+  mentionIndex = 0;
+  mentionRange = { start: start, end: pos, marker: m[2] };
+  renderMentionMenu();
+}
+
+function pickMention(item) {
+  if (!item || !mentionRange) return;
+  const v = messageInput.value;
+  const insert = mentionRange.marker + item.name + ' ';
+  messageInput.value = v.slice(0, mentionRange.start) + insert + v.slice(mentionRange.end);
+  const p = mentionRange.start + insert.length;
+  messageInput.setSelectionRange(p, p);
+  hideMentionMenu();
+  updateSendButtonState();
+  updateCtxBar();
+  messageInput.focus();
+}
+
+function moveMention(dir) {
+  mentionIndex = (mentionIndex + dir + mentionItems.length) % mentionItems.length;
+  renderMentionMenu();
+}
+
+function tagUserInComposer(name) {
+  const v = messageInput.value;
+  if (lc(v).indexOf('@' + lc(name)) === 0) { messageInput.focus(); return; }
+  const insert = '@' + name + ' ';
+  messageInput.value = insert + v;
+  messageInput.focus();
+  messageInput.setSelectionRange(insert.length, insert.length);
+  updateSendButtonState();
+}
+
+function stageFile(file) {
+  if (file.size > MAX_FILE_SIZE) {
+    showError('"' + file.name + '" is too big (max ' + formatBytes(MAX_FILE_SIZE) + ').');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    pendingFile = {
+      name: file.name,
+      size: file.size,
+      category: getFileCategory(file),
+      data: reader.result,
+    };
+    renderAttachPreview();
+    updateSendButtonState();
+  };
+  reader.onerror = () => showError('Couldn\'t read "' + file.name + '".');
+  reader.readAsDataURL(file);
+}
+
+function clearPendingFile() {
+  pendingFile = null;
+  renderAttachPreview();
+  updateSendButtonState();
+}
+
+function renderAttachPreview() {
+  attachBar.hidden = !pendingFile;
+  attachPreviewBox.innerHTML = '';
+  if (!pendingFile) return;
+
+  if (pendingFile.category === 'image') {
+    const img = document.createElement('img');
+    img.src = pendingFile.data;
+    img.alt = pendingFile.name;
+    img.className = 'attach-thumb';
+    attachPreviewBox.appendChild(img);
+  } else {
+    const chip = el('div', 'attach-file-chip');
+    const icon = el('div', 'file-icon');
+    icon.innerHTML = FILE_ICON_SVG;
+    chip.appendChild(icon);
+    chip.appendChild(el('span', 'attach-file-name', pendingFile.name));
+    attachPreviewBox.appendChild(chip);
+  }
+
+  const removeBtn = el('button', 'attach-remove', '\u00d7');
+  removeBtn.type = 'button';
+  removeBtn.setAttribute('aria-label', 'Remove attachment');
+  removeBtn.addEventListener('click', clearPendingFile);
+  attachPreviewBox.appendChild(removeBtn);
+}
+
+// ---------- settings (name, avatar, color, dark mode) ----------
+function loadAvatar() {
+  const raw = getStorage(AVATAR_KEY);
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        if ((parsed.type === 'upload' || parsed.type === 'link') && typeof parsed.value === 'string' && parsed.value) {
+          const av = { type: parsed.type, value: parsed.value };
+          if (validHexColor(parsed.color)) av.color = parsed.color;
+          return av;
+        }
+        if (parsed.type === 'initials') {
+          const av = { type: 'initials' };
+          if (validHexColor(parsed.color)) av.color = parsed.color;
+          return av;
+        }
+      }
+    } catch (e) { }
+  }
+  return { type: 'initials' };
+}
+
+function loadPreviewsSetting() {
+  const v = getStorage(PREVIEWS_KEY);
+  return v === null ? true : v === '1';
+}
+
+function saveAvatar(av) {
+  if (settingsTargetUser) {
+    const targetId = settingsTargetUser.id;
+    const data = {
+      type: 'force_profile',
+      name: settingsTargetUser.name,
+      avatar: av
+    };
+    if (client && client.connected) client.publish(ctlBase + '/' + targetId, JSON.stringify(data));
+    const u = onlineUsers.get(targetId);
+    if (u) { u.name = data.name; u.avatar = av; }
+    renderPresence();
+  }
+}
+
+function renderAvatarPreview() {
+  if (!settingsDraft) return;
+  avatarPreview.innerHTML = '';
+  const avData = settingsDraft.avatar;
+  const nameStr = settingsDraft.name;
+
+  if ((avData.type === 'upload' || avData.type === 'link') && avData.value) {
+    const img = document.createElement('img');
+    img.src = avData.value;
+    img.className = 'avatar-img';
+    img.alt = nameStr;
+    img.addEventListener('error', () => {
+      avatarPreview.innerHTML = '';
+      avatarPreview.style.background = avatarColorFor(nameStr || '?', avData);
+      avatarPreview.textContent = (nameStr[0] || '?').toUpperCase();
+    });
+    avatarPreview.style.background = 'transparent';
+    avatarPreview.appendChild(img);
+  } else {
+    avatarPreview.style.background = avatarColorFor(nameStr || '?', avData);
+    avatarPreview.textContent = (nameStr[0] || '?').toUpperCase();
+  }
+}
+
+function buildAvatarColorPicker() {
+  if (!avatarColors) return;
+  avatarColors.innerHTML = '';
+  NAME_COLORS.forEach((color) => {
+    const b = el('button', 'avatar-color');
+    b.type = 'button';
+    b.style.background = color;
+    b.dataset.color = color;
+    b.title = 'Profile color';
+    b.setAttribute('aria-label', 'Use profile color ' + color);
+    b.addEventListener('click', () => setAvatarColor(color));
+    avatarColors.appendChild(b);
+  });
+  syncAvatarColorSelection();
+}
+
+function syncAvatarColorSelection() {
+  if (!avatarColors || !settingsDraft) return;
+  const cur = validHexColor(settingsDraft.avatar.color) ? settingsDraft.avatar.color.toLowerCase() : '';
+  Array.prototype.forEach.call(avatarColors.children, (b) => {
+    b.classList.toggle('active', (b.dataset.color || '').toLowerCase() === cur);
+  });
+}
+
+function setAvatarColor(color) {
+  if (!validHexColor(color) || !settingsDraft) return;
+  settingsDraft.avatar.color = color;
+  if (settingsDraft.avatar.type !== 'upload' && settingsDraft.avatar.type !== 'link') {
+    settingsDraft.avatar.type = 'initials';
+  }
+  renderAvatarPreview();
+  syncAvatarColorSelection();
+}
+
+function renderAvatarModeBody() {
+  avatarModeBody.innerHTML = '';
+  avatarColors.classList.toggle('inactive', avatarDraftMode !== 'initials');
+
+  if (avatarDraftMode === 'upload') {
+    const row = el('div', 'avatar-upload-row');
+    const btn = el('button', 'btn btn-soft', 'Choose image…');
+    btn.type = 'button';
+    btn.addEventListener('click', () => avatarFileInput.click());
+    row.appendChild(btn);
+    row.appendChild(el('p', 'settings-hint', 'Resized to a small square automatically.'));
+    avatarModeBody.appendChild(row);
+  } else if (avatarDraftMode === 'link') {
+    const row = el('div', 'avatar-link-row');
+    const input = document.createElement('input');
+    input.type = 'url';
+    input.placeholder = 'https://example.com/pic.png';
+    if (settingsDraft && settingsDraft.avatar.type === 'link') input.value = settingsDraft.avatar.value;
+    const apply = el('button', 'btn btn-primary', 'Use');
+    apply.type = 'button';
+    apply.addEventListener('click', () => {
+      const url = input.value.trim();
+      if (!url || !settingsDraft) return;
+      settingsDraft.avatar.type = 'link';
+      settingsDraft.avatar.value = url;
+      renderAvatarPreview();
+    });
+    row.appendChild(input);
+    row.appendChild(apply);
+    avatarModeBody.appendChild(row);
+  } else {
+    avatarModeBody.appendChild(el('p', 'settings-hint', 'Uses the first letter of your name.'));
+  }
+}
+
+function openSettings(targetId) {
+  if (targetId) {
+    const u = onlineUsers.get(targetId);
+    if (!u) return;
+    settingsTargetUser = {
+      id: targetId,
+      name: u.name,
+      avatar: u.avatar ? JSON.parse(JSON.stringify(u.avatar)) : { type: 'initials' }
+    };
+    settingsTitle.textContent = 'Settings for ' + u.name;
+    settingsDraft = {
+      name: u.name,
+      avatar: JSON.parse(JSON.stringify(settingsTargetUser.avatar))
+    };
+    previewsRow.hidden = true;
+    darkModeRow.hidden = true;
+  } else {
+    settingsTargetUser = null;
+    settingsTitle.textContent = 'Settings';
+    settingsDraft = {
+      name: myName,
+      avatar: JSON.parse(JSON.stringify(myAvatar))
+    };
+    previewsRow.hidden = false;
+    darkModeRow.hidden = false;
+  }
+
+  settingsName.value = settingsDraft.name;
+  avatarDraftMode = settingsDraft.avatar.type || 'initials';
+
+  Array.prototype.forEach.call(avatarModes.children, (b) => b.classList.toggle('active', b.dataset.mode === avatarDraftMode));
+  renderAvatarModeBody();
+  renderAvatarPreview();
+  syncAvatarColorSelection();
+  
+  previewsToggle.classList.toggle('on', showPreviews);
+  previewsToggle.setAttribute('aria-pressed', showPreviews ? 'true' : 'false');
+  const dark = document.body.classList.contains('dark');
+  darkToggle.classList.toggle('on', dark);
+  darkToggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  
+  settingsModal.hidden = false;
+}
+
+function saveSettings() {
+  if (!settingsDraft) return;
+  const name = settingsName.value.trim().slice(0, 24);
+  if (!name) return;
+
+  if (settingsTargetUser) {
+    if (isNameTaken(name, settingsTargetUser.id)) {
+      showError('That name is already taken by someone else.');
+      return;
+    }
+    settingsTargetUser.name = name;
+    settingsTargetUser.avatar = settingsDraft.avatar;
+    saveAvatar(settingsTargetUser.avatar);
+  } else {
+    if (isNameTaken(name, myClientId)) {
+      showError('That name is already taken by someone else.');
+      return;
+    }
+    myName = name;
+    myAvatar = settingsDraft.avatar;
+    setStorage(NAME_KEY, myName);
+    setStorage(AVATAR_KEY, JSON.stringify(myAvatar));
+    publishPresence();
+  }
+  settingsModal.hidden = true;
+  settingsTargetUser = null;
+  settingsDraft = null;
+  settingsTitle.textContent = 'Settings';
+}
+
+function closeSettings() {
+  settingsModal.hidden = true;
+  settingsTargetUser = null;
+  settingsDraft = null;
+  settingsTitle.textContent = 'Settings';
+}
+
+// ---------- emoji picker ----------
+function buildEmojiPanel() {
+  emojiPanel.innerHTML = '';
+  EMOJI_PICKS.forEach((emoji) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'emoji-pick';
+    b.textContent = emoji;
+    b.addEventListener('click', () => insertAtCursor(emoji));
+    emojiPanel.appendChild(b);
+  });
+}
+
+function insertAtCursor(text) {
+  const start = messageInput.selectionStart == null ? messageInput.value.length : messageInput.selectionStart;
+  const end = messageInput.selectionEnd == null ? messageInput.value.length : messageInput.selectionEnd;
+  const v = messageInput.value;
+  messageInput.value = v.slice(0, start) + text + v.slice(end);
+  const p = start + text.length;
+  messageInput.setSelectionRange(p, p);
+  messageInput.focus();
+  updateSendButtonState();
+}
+
+// ---------- entering the chat ----------
+function getOrCreateClientId() {
+  if (memClientId) return memClientId;
+  let id = getStorage(ID_KEY);
+  if (!id) {
+    id = 'u' + Math.random().toString(36).slice(2, 10);
+    setStorage(ID_KEY, id);
+  }
+  memClientId = id;
+  return id;
+}
+
+function enterChat(name) {
+  myName = name;
+  hideGateError();
+  nameGate.hidden = true;
+  chatApp.hidden = false;
+  blockScreen.hidden = true;
+  document.body.classList.add('in-chat');
+
+  try {
+    myClientId = getOrCreateClientId();
+  } catch (e) {
+    myClientId = 'u' + Math.random().toString(36).slice(2, 10);
+  }
+
+  try {
+    if (isAdmin) setAdmin(true);
+  } catch (e) { }
+
+  try {
+    connectMqtt();
+  } catch (err) {
+    addSystemMessage('Could not connect: ' + (err && err.message ? err.message : String(err)));
+  }
+}
+
+// ---------- wiring ----------
+nameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = nameInput.value.trim().slice(0, 24);
+  if (!name) {
+    showGateError('Please type a name first.');
+    return;
+  }
+  
+  setStorage(NAME_KEY, name);
+  try {
+    enterChat(name);
+  } catch (err) {
+    showNameGate();
+    nameInput.value = name;
+    showGateError('Couldn\'t join: ' + (err && err.message ? err.message : String(err)));
+  }
+});
+
+settingsBtn.addEventListener('click', () => openSettings(null));
+settingsCancel.addEventListener('click', closeSettings);
+settingsSave.addEventListener('click', saveSettings);
+settingsModal.addEventListener('click', (e) => { if (e.target === settingsModal) closeSettings(); });
+settingsName.addEventListener('input', () => {
+  if (settingsDraft) {
+    settingsDraft.name = settingsName.value.trim().slice(0, 24);
+    renderAvatarPreview();
+  }
+});
+settingsName.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); saveSettings(); }
+});
+
+avatarModes.addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-mode]');
+  if (!btn || !settingsDraft) return;
+  avatarDraftMode = btn.dataset.mode;
+  Array.prototype.forEach.call(avatarModes.children, (b) => b.classList.toggle('active', b === btn));
+  renderAvatarModeBody();
+  
+  if (avatarDraftMode === 'initials') {
+    settingsDraft.avatar.type = 'initials';
+    renderAvatarPreview();
+  }
+});
+
+avatarFileInput.addEventListener('change', () => {
+  const file = avatarFileInput.files[0];
+  avatarFileInput.value = '';
+  if (!file || !settingsDraft) return;
+  resizeImageFile(file, AVATAR_SIZE, 0.82)
+    .then((res) => {
+      settingsDraft.avatar = { type: 'upload', value: res.dataUrl, color: res.color };
+      renderAvatarPreview();
+      syncAvatarColorSelection();
+    })
+    .catch(() => showError('Couldn\'t use that image.'));
+});
+
+darkToggle.addEventListener('click', () => {
+  const on = !document.body.classList.contains('dark');
+  document.body.classList.toggle('dark', on);
+  setStorage(DARK_KEY, on ? '1' : '0');
+  darkToggle.classList.toggle('on', on);
+  darkToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+});
+
+previewsToggle.addEventListener('click', () => {
+  showPreviews = !showPreviews;
+  setStorage(PREVIEWS_KEY, showPreviews ? '1' : '0');
+  previewsToggle.classList.toggle('on', showPreviews);
+  previewsToggle.setAttribute('aria-pressed', showPreviews ? 'true' : 'false');
+  rebuildFeed();
+});
+
+banPresets.addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-min]');
+  if (btn) confirmBan(Number(btn.dataset.min));
+});
+banCustomBtn.addEventListener('click', () => confirmBan(Number(banCustomInput.value)));
+banCancel.addEventListener('click', closeBanModal);
+banModal.addEventListener('click', (e) => { if (e.target === banModal) closeBanModal(); });
+
+banMinusBtn.addEventListener('click', () => {
+  const v = parseInt(banCustomInput.value) || 1;
+  banCustomInput.value = Math.max(1, v - 1);
+});
+banPlusBtn.addEventListener('click', () => {
+  const v = parseInt(banCustomInput.value) || 0;
+  banCustomInput.value = v + 1;
+});
+
+buildEmojiPanel();
+emojiBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  hideMentionMenu();
+  emojiPanel.hidden = !emojiPanel.hidden;
+});
+document.addEventListener('click', (e) => {
+  if (!emojiPanel.hidden && !emojiPanel.contains(e.target) && e.target !== emojiBtn) emojiPanel.hidden = true;
+});
+
+blockBtn.addEventListener('click', () => {
+  blockScreen.hidden = true;
+  blocked = false;
+  chatApp.hidden = false;
+  document.body.classList.add('in-chat');
+  if (!client || !client.connected) {
+    left = false;
+    connectMqtt();
+  } else {
+    left = false;
+    publishPresence();
+  }
+});
+
+brandLogo.addEventListener('click', () => {
+  logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(() => { logoClicks = 0; }, 1500);
+  if (logoClicks >= 7) {
+    logoClicks = 0;
+    if (!isAdmin) openAdminModal();
+  }
+});
+
+adminForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (adminPass.value === ADMIN_PASSWORD) {
+    closeAdminModal();
+    setAdmin(true);
+  } else {
+    adminError.hidden = false;
+    adminPass.value = '';
+    adminPass.focus();
+  }
+});
+adminCancel.addEventListener('click', closeAdminModal);
+adminModal.addEventListener('click', (e) => { if (e.target === adminModal) closeAdminModal(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (!adminModal.hidden) closeAdminModal();
+  else if (!settingsModal.hidden) closeSettings();
+  else if (!banModal.hidden) closeBanModal();
+});
+adminExit.addEventListener('click', () => setAdmin(false));
+
+loadEarlierBtn.addEventListener('click', loadEarlier);
+ctxClose.addEventListener('click', () => { replyTarget = null; updateCtxBar(); messageInput.focus(); });
+
+sendBtn.addEventListener('click', sendText);
+messageInput.addEventListener('input', () => {
+  updateSendButtonState();
+  updateMentionMenu();
+  updateCtxBar();
+  emojiPanel.hidden = true;
+});
+messageInput.addEventListener('blur', () => setTimeout(hideMentionMenu, 150));
+messageInput.addEventListener('keydown', (e) => {
+  if (!mentionMenu.hidden && mentionItems.length) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); moveMention(1); return; }
+    if (e.key === 'ArrowUp') { e.preventDefault(); moveMention(-1); return; }
+    if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); pickMention(mentionItems[mentionIndex]); return; }
+    if (e.key === 'Escape') { e.preventDefault(); hideMentionMenu(); return; }
+  }
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    sendText();
+  }
+});
+
+chatApp.addEventListener('dragenter', (e) => {
+  e.preventDefault();
+  dragCounter++;
+  if (dragCounter === 1) chatApp.classList.add('dragover');
+});
+chatApp.addEventListener('dragleave', (e) => {
+  e.preventDefault();
+  dragCounter--;
+  if (dragCounter === 0) chatApp.classList.remove('dragover');
+});
+chatApp.addEventListener('dragover', (e) => {
+  e.preventDefault();
+});
+chatApp.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dragCounter = 0;
+  chatApp.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) stageFile(file);
+});
+
+messageInput.addEventListener('paste', (e) => {
+  const items = e.clipboardData.items;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].type.indexOf('image') !== -1) {
+      e.preventDefault();
+      const file = items[i].getAsFile();
+      if (file) stageFile(file);
+      break;
+    }
+  }
+});
+
+attachBtn.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  fileInput.value = '';
+  if (file) stageFile(file);
+});
+
+// ---------- boot ----------
+if (getStorage(ADMIN_KEY) === '1') isAdmin = true;
+if (getStorage(DARK_KEY) === '1') document.body.classList.add('dark');
+myAvatar = loadAvatar();
+showPreviews = loadPreviewsSetting();
+buildAvatarColorPicker();
+
+const savedName = getStorage(NAME_KEY);
+if (savedName) {
+  try {
+    enterChat(savedName);
+  } catch (e) {
+    showNameGate();
+  }
+} else {
+  showNameGate();
+}
+</script>
+</body>
+</html>
